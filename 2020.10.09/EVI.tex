@@ -1,7 +1,153 @@
-\documentclass{ctexbeamer}
+%!TEX program=pdflatex
 
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\title{Estimation of Extreme Value Index}
+\author{Laurens de Haan and Ana Ferrira (2006)}
+\date{\today}
 \begin{document}
-\begin{titlepage}
-    
-\end{titlepage}
+
+
+ 
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section{Hill Estimator}
+\begin{frame}
+Hill estimator applies for $\gamma>0$.
+Recall that $F\in D(G_{\gamma})$ for $\gamma>0$ if and only if
+$$
+\lim_{t\to \infty} \dfrac{1-F(tx)}{1-F(t)} =x^{-1/\gamma}.
+$$
+
+And Remark 1.2.3 shows that this is equivalent to
+$$
+\lim_{t\to \infty} E(\log X -\log t|X>t)=\gamma.
+$$
+Hence, we have
+$$
+\dfrac{\int_{t}^{\infty}(\log u -\log t) dF(u)}{1-F(t)} \to \gamma.
+$$
+\end{frame}
+
+\begin{frame}
+    Replace $t$ by $X_{n-k,n}$ and $F$ by $F_n$, we then get Hill estimator 
+    $$
+\hat{\gamma}_H:= \dfrac{1}{k} \sum_{i=0}^{k-1} \log X_{n-i,n}-\log X_{n-k,n}
+    $$.
+\end{frame}
+
+
+\begin{frame}
+    Suppose $F\in D(G_{\gamma})$ with $\gamma>0$. Then as $n \to \infty, k = k(n) \to \infty, k/n \to 0$,
+    $$
+    \hat{\gamma}_H \stackrel{P}{\to} \gamma.
+    $$
+\end{frame}
+
+\begin{frame}{Lemma 3.2.3}
+    Let $E_i\stackrel{i.i.d.}{\sim } \exp(1)$. Let $E_{1,n} \le E_{2,n}\le \cdots \le E_{n,n}$ be the order statistics. let $f$ be such that $Var f(E) <\infty$. Then 
+    $$
+\sqrt{k}\left( \dfrac{1}{k} \sum_{i=0}^{k-1} f(E_{n-i,n}-E_{n-k,n})-Ef(E)\right)
+    $$
+    is independent of $E_{n-k,n}$ and asymptotically normal with mean zero and variance $Var f(E)$ as $n\to \infty,k\to\infty,k/n \to 0$.
+\end{frame}
+
+
+\begin{frame}{Theorem 3.2.5}
+    Suppose $F$ satisfies the second order condition. Then 
+    $$
+\sqrt{k} (\hat{\gamma}_H -\gamma)\stackrel{d}{\to} N(\lambda/(1-\rho),\gamma^2)
+    $$
+    provided that $k\to \infty, k/n\to 0, n\to \infty$ and
+    $$
+\lim_{n\to \infty} \sqrt{k}A(\dfrac{n}{k}) =\lambda.
+    $$
+\end{frame}
+
+
+\section{Pickands Estimator}
+\begin{frame}{The Pickands Estimator}
+Pickands estimator applies for $\gamma \in \mathbb{R}$.
+The Pickands estimator is defined as 
+$$
+\hat{\gamma}_P :=(\log 2)^{-1} \log \dfrac{X_{n-k,n}-X_{n-2k,n}}{X_{n-2k,n}-X_{n-4k,n}}
+$$
+
+Assume $n\to \infty,k\to\infty,k/n \to 0$ and $F\in D(G_{\gamma})$. Then 
+   $$
+\hat{\gamma}_P \to \gamma.
+   $$
+\end{frame}
+
+\begin{frame}{Theorem 3.3.5}
+    Assume the second order condition. Then as $n\to \infty,k\to\infty,k/n \to 0$,
+    $$
+\sqrt{k}(\hat{\gamma}_P-\gamma)\stackrel{d}{\to} N(\lambda b_{\gamma,\rho},var_{\gamma})
+    $$
+\end{frame}
+
+
+\section{MLE}
+\begin{frame}{MLE}
+The MLE applies for $\gamma>-1/2$.
+    Recall that
+    $$
+\lim_{t\to x^*}P\left( \dfrac{X-t}{f(t)}>x|X>t\right)=1-H_{\gamma}(x):=(1+\gamma x)^{-1/\gamma}
+    $$
+\end{frame}
+
+\begin{frame}{MLE}
+    Define $h_{\gamma ,\sigma}(x)=\partial H_{\gamma}(x/\sigma)/\partial x$.
+
+    The approximate likelihood is 
+    $$
+\prod_{i=1}^k h_{\gamma,\sigma}(z_i)
+    $$
+    with $z_i = x_{n-i+1} - x_{n-k,n}$.
+
+    Suppose the second order condition, we can prove the asymptotically normal of MLE. See Theorem 3.4.2.
+\end{frame}
+
+\section{Moment Estimator}
+\begin{frame}{Lemma 3.5.1}
+    Suppose $F\in D(G_{\gamma})$. Define for $j=1,2$,
+    $$
+M_n^{(j)}:=\dfrac{1}{k}\sum_{i=0}^{k-1} (\log X_{n-i,n}-\log X_{n-k,n})^j.
+    $$
+    Then for $k=k(n) \to \infty, k/n \to  0, n\to \infty$,
+$$
+\dfrac{M_n^{(j)}}{(a(n/k)/U(n/k))^j}\stackrel{P}{\to}\prod_{i=1}^j \dfrac{i}{1-i\gamma_{-}}
+$$
+\end{frame}
+
+\begin{frame}{Moment Estimator}
+    By Lemma 3.5.1, we have 
+    $$
+\dfrac{(M_n^{(1)})^2}{M_n^{(2)}} \stackrel{P}{\to} \dfrac{1-2\gamma_{-}}{2(1-\gamma_{-})}
+    $$
+    We then define the Moment estimator as 
+$$
+\hat{\gamma}_M:= M_n^{(1)}+1-1/2\left(1-\dfrac{(M_n^{(1)})^2}{M_n^{(2)}}\right)^{-1}.
+$$
+Similarly, under some second order condition, we can prove the asymptotical normality for the moment estimator.
+\end{frame}
+
+\section{Other estimator}
+\begin{frame}
+    \begin{itemize}
+        \item Probability Weigted Moment estimator(PWM): holds for $\gamma<1$.
+        \item Negative Hill Estimator: holds for $\gamma<-1/2$.
+    \end{itemize}
+\end{frame}
+
+\section{Block Maxima}
+\begin{frame}
+    \begin{itemize}
+        \item  MLE(B\"ucher and Segers(2018)), PMW(de Haan and Ferrira(2015))
+        \item GPD vs GEV ? (B\"ucher and Zhou)
+    \end{itemize}
+\end{frame}
 \end{document}

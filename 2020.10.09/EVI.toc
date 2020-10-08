@@ -1,0 +1,6 @@
+\beamer@sectionintoc {1}{Hill Estimator}{2}{0}{1}
+\beamer@sectionintoc {2}{Pickands Estimator}{7}{0}{2}
+\beamer@sectionintoc {3}{MLE}{9}{0}{3}
+\beamer@sectionintoc {4}{Moment Estimator}{11}{0}{4}
+\beamer@sectionintoc {5}{Other estimator}{13}{0}{5}
+\beamer@sectionintoc {6}{Block Maxima}{14}{0}{6}
