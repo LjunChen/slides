@@ -1,0 +1,179 @@
+%!TEX program=pdflatex
+
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+\title{Estimation of Extreme Quantile}
+\author{Laurens de Haan and Ana Ferrira (2006)}
+\date{October 16, 2020}
+\begin{document}
+
+
+ 
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Introduction}
+\begin{itemize}
+    \item Mean vs Quantile
+    \item Quantile vs Extreme Quantile
+    \item Regression vs Quantile Regression
+    \item Quantile Regression vs Extreme Quantile Regression
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction}
+    Let $X_1,\dots,X_{100}$ be i.i.d. random variables with coommon distribution $F$.
+
+    \begin{itemize}
+        \item Estimate 50\% quantile.
+        \item Estimate 80\% quantile.
+        \item Estimate 95\% quantile.
+        \item Estimate 99\% quantile.
+    \end{itemize}
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Introduction}
+    \begin{itemize}
+        \item Now, we are ready to consider extreme quantile estimation. 
+        \item Let $x_p:=U(1/p)$  be the quantile we want to estimate. 
+        \item     We are particularly intertesd in the cases in which the mean number oberservations above $x_p$, $np$ equals to a very small number.
+    \end{itemize}
+
+$$
+U(p_n) \approx b(n/k)+a(n/k)\dfrac{\left(\dfrac{k}{np_n}\right)^{\gamma}-1}{\gamma}
+$$
+\begin{itemize}
+    \item Estimation of $\gamma$.(well discussed in Chapter 3)
+    \item Estimation of $b(n/k)$. 
+    \item Estimation of $a(n/k)$.
+\end{itemize}
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Scale Estimation}
+Recall that
+$$
+\dfrac{M_n^{(1)}}{a(n/k)/U(n/k)}\stackrel{P}{\to} \dfrac{1}{1-\gamma_{-}}.
+$$
+
+Then we can estimate $a(n/k)$ by
+$$
+\hat{\sigma}_M:=X_{n-k,n}M_n^{(1)}(1-\hat{\gamma}_{-}).
+$$
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Scale Estimation}
+    Assume $F\in D(G_{\gamma})$ and $k\to \infty, k/n \to 0$ as $n\to \infty$. Then as $n \to \infty$, 
+    $$
+    \dfrac{\hat{\sigma}_M}{a(n/k)}\to 1.
+    $$
+    Assume second order condition, then 
+    $$
+\sqrt{k}\left(\dfrac{\hat{\sigma}_M}{a(n/k)}-1\right) \stackrel{d}{\to} N(\lambda b_{\gamma,\rho},var_{\gamma})
+    $$
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Threshold Estimation}
+Indeed, we can always take $b_n=U(n/k)$.
+
+From Theorem 2.4.1, we have
+$$
+\dfrac{X_{n-k,n}-U(n/k)}{a(n/k)}\stackrel{d}{\to} N(0,1).
+$$
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Extreme Quantile Estimation}
+    Let $k$ be an intermediate sequence. Suppose that for suitable estimators $\hat{\gamma}, \hat{a}(n/k), \hat{b}(n/k)$,
+    $$
+\sqrt{k}\left(\hat{\gamma}-\gamma,\dfrac{\hat{a}(n/k)}{a(n/k)}-1,\dfrac{\hat{b}(n/k)-X_{n-k,n}}{a(n/k)}\right)\stackrel{d}{\to}(\Gamma,\Lambda,B).
+    $$
+
+Define
+$$
+\hat{x}_{p_n}:=\hat{b}(n/k)+\hat{a}(n/k)\dfrac{\left(\dfrac{k}{np_n}\right)^{\hat{\gamma}}-1}{\hat{\gamma}}
+$$
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Theorem 4.3.1}
+    Suppose second order condition holds and 
+\begin{itemize}
+    \item $\rho<0$ or $\rho=0,\gamma<0$.
+    \item $\sqrt{k}A(n/k) \to \lambda$.
+    \item $np_n=o(k)$ and $\log(np_n)=o(\sqrt{k})$.
+\end{itemize}
+Then as $n \to \infty$,
+$$
+\sqrt{k} \dfrac{\hat{x}_{p_n}-x_{p_n}}{a(n/k)q_{\lambda}(d_n)} \stackrel{d}{\to} \Gamma + (\gamma_{-})^2B -{\gamma_{-}}\Lambda -\lambda \dfrac{\gamma_{-}}{\gamma_{-}+\rho}
+$$
+with $d_n=k/(np_n)$ and 
+$$
+q_{\lambda}(t):=\int_{1}^{t}s^{\gamma-1}\log s ds.
+$$
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Tail Probability Estimation}
+
+    Now, we consider the dual problem, estimate 
+    $$
+    p = 1-F(x).
+    $$
+    To estimate the probability, we can use 
+    $$
+    \hat{p}_n = \dfrac{k}{n} \left\{\max\left(0, 1+\hat{\gamma} \dfrac{x_n-\hat{b}(n/k)}{\hat{a}(n/k)}    \right)\right\}^{-1/\hat{\gamma}}
+    $$    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Tail Probaility Estimation}
+Suppose that $\rho>-1/2$ and second order condition holds. Suppose
+\begin{itemize}
+    \item $\rho<0$ or $\rho=0,\gamma<0$.
+    \item $k\to \infty, k/n \to 0$ and $\sqrt{k}A(n/k)\to \lambda$.
+    \item $d_n\to \infty$ and $w_{\gamma}(d_n)=o(\sqrt{k})$ where
+        $$
+        w_{\gamma}(d_n)=t^{-\gamma}\int_{1}^{t} s^{\gamma-1}\log sds.
+        $$
+\end{itemize}
+Then as $n \to \infty$,
+$$
+\dfrac{\sqrt{k}}{w_{\gamma}(d_n)}\left(\dfrac{\hat{p}_n}{p_n}-1\right)\stackrel{d}{\to} \Gamma + (\gamma_{-})^2B -{\gamma_{-}}\Lambda -\lambda \dfrac{\gamma_{-}}{\gamma_{-}+\rho}
+$$
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Endpoint Estimation}
+We can estimate $x^*$ by 
+$$
+\hat{x}^*:=\hat{b}(n/k)-\dfrac{\hat{a}(n/k)}{\hat{\gamma}}.
+$$
+    
+
+\end{frame}
+\end{document}
