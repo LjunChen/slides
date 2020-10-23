@@ -27,7 +27,7 @@
 
 \begin{frame}
     \frametitle{Introduction}
-    Let $X_1,\dots,X_{100}$ be i.i.d. random variables with coommon distribution $F$.
+    Let $X_1,\dots,X_{100}$ be i.i.d. random variables with common distribution $F$.
 
     \begin{itemize}
         \item Estimate 50\% quantile.
@@ -89,7 +89,7 @@ $$
 
 \begin{frame}
     \frametitle{Threshold Estimation}
-Indeed, we can always take $b_n=U(n/k)$.
+Indeed, we can always take $b(n/k)=U(n/k)$. Then, we can estimate $b(n/k)$ by $X_{n-k,n}$.n
 
 From Theorem 2.4.1, we have
 $$
@@ -133,7 +133,25 @@ q_{\lambda}(t):=\int_{1}^{t}s^{\gamma-1}\log s ds.
 $$
 \end{frame}
 
+\begin{frame}
+    \frametitle{Heavy Tailed Case}
+    A simpler version is valid when $\gamma$ is positive.
 
+    Suppose for some function $A$ with $A(t)\to 0$,
+    $$
+\lim_{t\to \infty} \dfrac{\frac{U(tx)}{U(t)}-x^{\gamma}}{A(t)}=x^{\gamma} \dfrac{x^{\rho}-1}{\rho}.
+    $$
+    Suppose the same condition as in Theorem 4.3.1. Define
+    $$
+\hat{x}_{p_n}:=X_{n-k,n}\left(\dfrac{k}{np_n}\right)^{\hat{\gamma}}.
+    $$
+Then as $n \to \infty$,
+$$
+\dfrac{\sqrt{k}}{\log d_n}\left(\dfrac{\hat{x}_{p_n}}{x_{p_n}}-1\right)\stackrel{d}{\to} \Gamma.
+$$
+    
+
+\end{frame}
 \begin{frame}
     \frametitle{Tail Probability Estimation}
 
@@ -166,7 +184,19 @@ $$
 $$
 \end{frame}
 
+\begin{frame}
+    \frametitle{Heavy Tailed Case}
+    Define 
+$$
+\hat{p}_n:=\dfrac{k}{n}\left(\dfrac{x_n}{X_{n-k,n}}\right)
+$$
+Then as $n \to \infty$,
+$$
+\dfrac{\gamma \sqrt{k}}{\log d_n}\left(\dfrac{\hat{p}_n}{p_n}-1\right)\stackrel{d}{\to}\Gamma.
+$$
+    
 
+\end{frame}
 \begin{frame}
     \frametitle{Endpoint Estimation}
 We can estimate $x^*$ by 
@@ -175,5 +205,14 @@ $$
 $$
     
 
+\end{frame}
+
+\begin{frame}
+    \frametitle{Further Reading about Extreme Quantile Regression}
+    \begin{itemize}
+        \item Chernozhukov, V. (2005). Extremal quantile regression. The Annals of Statistics, 33(2), 806-839.
+        \item Wang, H. J., Li, D., \& He, X. (2012). Estimation of high conditional quantiles for heavy-tailed distributions. Journal of the American Statistical Association, 107(500), 1453-1464.
+        \item Wang, H. J., \& Li, D. (2013). Estimation of extreme conditional quantiles through power transformation. Journal of the American Statistical Association, 108(503), 1062-1074.
+    \end{itemize}
 \end{frame}
 \end{document}
