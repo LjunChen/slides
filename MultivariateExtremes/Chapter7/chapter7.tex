@@ -1,0 +1,518 @@
+\documentclass[11pt]{beamer}
+\usetheme{CambridgeUS}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\author{L. Chen}
+\title{Estimation of the Dependence Structure}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+\institute{Fudan University} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+\begin{frame}{Review}
+The function $L$ is defined by
+$$L(x,y):=-\log G_0(\frac{1}{x},\frac{1}{y}),$$
+for $x,y>0$. And $L$ is connected to the exponent measure $v$ as follows:
+\begin{displaymath}
+L(x,y):=v\{ (s,t)\in \mathbb{R}_{+}^2: s>1/x \, \text{or }\, t>1/y\}.
+\end{displaymath}
+\end{frame}
+
+\begin{frame}{Review}
+\begin{enumerate}
+\item $L(ax,ay)=aL(x,y)$, for all $a,x,y>0$.
+\item $L(x,0)$=$L(0,x)$=x, for all $x>0$.
+\item $\max(x,y)\le L(x,y)\le x+y $, for all $x,y>0$.
+\item If $X$ and $Y$ are independent, then $L(x,y)=x+y.$
+\item If $X=Y a.s.$, then $L(x,y)=\max(x,y)$ for $x,y >0$.
+\item $L$ is continous and convex.
+\end{enumerate}
+\end{frame}
+\begin{frame}{Estimation of $L$}
+Recall that:
+\begin{equation}\label{estimate L}
+\lim_{t \to \infty}t \{ 1-F(U_1(\frac{t}{x}),U_2(\frac{t}{y}))\}=L(x,y).
+\end{equation}
+Substiute $t=n/k$,
+(\ref{estimate L}) can be read as
+\begin{equation}
+\lim_{n \to \infty}\frac{n}{k}\{ 1-F(U_1(\frac{n}{kx}),U_2(\frac{n}{ky}))\}=L(x,y).
+\end{equation}
+Relacing $F$ by $F_n$, $U_1(\frac{n}{kx})$ by $X_{n-[kx]+1,n}$, and  $U_2(\frac{n}{ky})$ by $Y_{n-[ky]+1,n}$, we get
+\begin{equation}
+\hat{L}(x,y):=\frac{1}{k}\sum_{i=1}^n 1_{\{X_i\ge X_{n-[kx]+1,n}\, \text{or}\, Y_i \ge Y_{n-[ky]+1,n}\}}.
+\end{equation}
+\end{frame}
+
+\begin{frame}{Consistency}
+Suppose $F$ is in the domian of extreme value distribution $G$. Let the marginal distributiobn function pf $G$ are exactly $\exp(-(1+\gamma_i x)^{-1/\gamma_i})$ for $i=1,2.$ Then for $T>0$ as $n\to \infty, k=k(n)\to \infty,k/n\to 0$,
+\begin{displaymath}
+\sup_{0\le x,y\le T}  |\hat{L}(x,y)-L(x,y)|\stackrel{P}{\to}0.
+\end{displaymath}
+Sketch of the Proof:
+\begin{enumerate}
+\item Prove pointwise convergence.
+\item Prove Convergence of the Process.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Asymptotical Normality}
+Further Assumption:
+\begin{itemize}
+\item Suppose that for some $\alpha>0$ and for all $x,y>0$,
+\begin{equation}\label{7.2.8}
+t \{ 1-F(U_1(\frac{t}{x}),U_2(\frac{t}{y}))\}=L(x,y)+O(t^{-\alpha}),\tag{7.2.8}
+\end{equation}
+holds uniformly on the set 
+\begin{displaymath}
+\{x^2+y^2=1,x\ge 0, y\ge 0 \}.
+\end{displaymath}
+\item The function $L$ has continous first-order partial derivatives 
+\begin{displaymath}
+L_1(x,y):=\frac{\partial}{\partial x} L(x,y), \quad \text{and} \quad L_2(x,y):=\frac{\partial}{\partial y}L(x,y).
+\end{displaymath}
+\end{itemize}
+\end{frame}
+\begin{frame}{Asymptotical Normality}
+We first introduce a meansure $\mu$ that is closely related to the measure $v$ as follows: for $x,y>0$,
+\begin{displaymath}
+\begin{split}
+&\mu\{(s,t)\in [0,\infty]^2   \setminus \{(\infty,\infty) \} : s<x\, \text{or}\, t<y\} \\
+& :=v\{ (s,t)\in [0,\infty]^2\setminus \{ (0,0)\}: s>1/x \, \text{or} \, t>1/y\}.
+\end{split}
+\end{displaymath}
+Let $D([0,T]\times[0,T])$ be the space of the functions in $[0,T]\times[0,T]$ that are right continous and have finite left-hand limits.
+\end{frame}
+
+
+\begin{frame}{Asymptotical Normality}
+Then for $k=k(n)\to \infty, k(n)=o(n^{2\alpha/(1+2\alpha)}), \, \text{as} \, n\to \infty$,
+\begin{displaymath}
+\sqrt{k}(\hat{L}(x,y)-L(x,y))\stackrel{d}{\to } B(x,y),
+\end{displaymath}
+in $D([0,T]\times [0,T])$, for every $T>0$, where
+\begin{displaymath}
+B(x,y)=W(x,y) -L_1(x,y)W(x,0)-L_2(x,y) W(0,y),
+\end{displaymath}
+and $W$ is a continous mean-zero Gaussian process with covariance structure
+\begin{displaymath}
+EW(x_1,y_1)W(x_2,y_2)=\mu(R(x_1,y_1)\cap R(x_2,y_2)),
+\end{displaymath}
+with 
+\begin{displaymath}
+R(x,y):=\{ (u,v) \in \mathbb{R}_{+}^2:0\le u\le x \, \text{or} \, 0\le v\le y\}.
+\end{displaymath}
+\end{frame}
+\begin{frame}{Proposition 7.2.3}
+Define
+\begin{displaymath}
+U_i:=1-F_1(X_i), \quad \text{and} \quad W_i:=1-F_2(Y_i),
+\end{displaymath}
+and
+\begin{displaymath}
+V_{n,k}(x,y):=\frac{1}{k} \sum_{i=1}^n 1_{\{ U_i\le kx/n \, \text{or} \, W_i \le ky/n\}}.
+\end{displaymath}
+Then, provided $k\to \infty, k/n \to 0, as\, n \to \infty$,
+\begin{displaymath}
+\sqrt{k}\big(V_{n,k}(x,y)-\dfrac{n}{k}\{ 1-F(U_1(\dfrac{n}{kx}), U_2(\dfrac{n}{ky})) \} \big)\stackrel{d}{\to} W(x,y),
+\end{displaymath}
+in $D([0,T]\times[0,T])$, for every $T>0$.                                                                                                                                                                                                    
+\end{frame}
+\begin{frame}{Proposition 7.2.3}
+Sketch of the proof:
+\begin{itemize}
+\item Finite-dimensional distributions\par 
+\quad Lyapunov's form of the central limit theorem.\par 
+\quad How to get the asymptotical covariace matrix?
+\item Tightness                                                               
+\end{itemize}
+\end{frame}
+\begin{frame}{Corollary 7.2.4}
+If Moreove (\ref{7.2.8}) holds, $k\to \infty, k(n)=o(n^{2\alpha/(1+2\alpha)})$ as $n \to \infty$, then
+\begin{displaymath}
+\sqrt{k}\big (V_{n,k}(x,y)-L(x,y)\big)\stackrel{d}{\to } W(x,y),
+\end{displaymath}
+in $D([0,T]\times [0,T])$, for every $T>0$.\par 
+\vspace{2ex}
+Sketch of the proof:\par 
+\quad Skorohod's Representation.
+
+\end{frame}
+
+\begin{frame}{Skorohod's Representation}
+	Let $\{X_n, n\ge 1\}$ be random variables such that 
+	\begin{displaymath}
+	X_n \stackrel{d}{\to} X \quad \text{as}\quad  n \to \infty.
+	\end{displaymath} 
+	Then there exist random variables $X^{'}$ and $\{X_n^{'}, n\ge 1\}$ defined on the Lebesgue
+	probability space, such that
+	\begin{displaymath}
+	X_n^{'}\stackrel{d}{=} X_n \quad \text{for} \quad n \ge 1 ,\quad  X^{'}\stackrel{d}{=}X, \quad and \quad X_n^{'}\stackrel{a.s.}{\to}X^{'} \quad 	as \quad n \to \infty.
+	\end{displaymath}
+\end{frame}
+
+
+ 
+\begin{frame}{Estimation of the Spectral Measure}
+\begin{itemize}
+\item In section 7.2, we were concerned with estimating the extremes value distribution $G_0$ via estimation of the function $L(x,y):=-\log G_0(1/x,1/y), x,y>0$. 
+\item In general, $\hat{G}_0:=\exp(-\hat{L}(1/x,1/y))$ itself is not an extreme value distribution since it is not guaranteed that $\hat{L}$ satisfies the homogeneity property that is valid for the function $L$:
+\begin{displaymath}
+L(ax,ay)=aL(x,y),
+\end{displaymath}
+for $a,x,y>0.$
+\item It is useful to develop an estimatior for $G_0$ that itself is an extreme value distribution.
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}{Estimation of the Spectral Measure}
+\begin{itemize}
+\item This can be done Theorem 6.1.4, which states any finite measure satisfying the side conditions, represented by the distribution function $\Phi$, give rise to an extreme value distribution $G_0$ via $(6.1.31)$.
+\item Hence now we focus on the estimation of the spectral measure and in order to do so we have to go back to    the origin of this measure.
+\item We discuss only the spectral measure of Theorem 6.1.14(3) and not the other two, since asymptotic normality has been proved so far only for the third of the spectral measure.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation of the Spectral Measure}
+Recall that 
+\begin{displaymath}
+\Phi(\theta)=\mu(E_{1,\theta})
+\end{displaymath}
+with
+\begin{displaymath}
+E_{q,\theta}:=\{ (x,y)\in [0,\infty]^2\setminus \{ (\infty,\infty)\} : x\land y<q \,\text{and}\, y/x \le tan \theta \},
+\end{displaymath}
+for some $q>0$ and $\theta \in [0,\frac{\pi}{2}]$.
+Based on the proof of Theorem 6.1.9,
+\begin{displaymath}
+\begin{split}
+\lim_{t\to \infty} t &P\big ( (1-F_1(X))\land (1-F_2(Y)) \le \frac{1}{t} \quad \text{and} \quad \dfrac{1-F_2(Y)}{1-F_1(X)}\le tan \theta\big) \\
+&=\mu(E_{1,\theta})=\Phi(\theta),
+\end{split}
+\end{displaymath}
+for all continuity points $\theta$ of $\Phi$.
+\end{frame}
+\begin{frame}{Estimation of the Dependence Structure}
+We replace the measure $P$ by its empirical counterpart. We use $R(X_i)$ to denote the rank of the $i$-th observation $X_i, i=1,2,\dots,n$, among $(X_1,X_2,\dots, X_n)$.\par 
+Taking everything together we get the following estimator for $\Phi$:
+\begin{displaymath}
+\hat{\Phi}(\theta):=\frac{1}{k} \sum_{i=1}^n 1_{\{ R(X_i) \lor R(Y_i) \ge n+1-k\, \text{and} \, n+1-R(Y_i)\le (n+1-R(X_i)) tan \theta \}}.
+\end{displaymath}
+
+\end{frame}
+
+\begin{frame}{Estimation of $L$}
+Reall that
+\begin{displaymath}
+L(x,y)=\int_0^{\pi/2} \{     (x(1\land tan\theta))\lor (y(1\land cot \theta))                    \} \Phi(d\theta),
+\end{displaymath}
+for $x,y>0$. 
+Based on the proof of Theorem 7.3.1, the alternative expression for $L(x,y)$ is
+\begin{displaymath}
+L(x,y)=x\Phi(\frac{\pi}{2}) +(x\lor y)\int_{\pi/4}^{arctan(y/x)} \Phi(\theta)(\frac{1}{sin^2 \theta} \land \frac{1}{cos^2 \theta} )d\theta.
+\end{displaymath}
+This leads to an alternative estimator of the function $L$ with $\Phi$ repalced by $\hat{\Phi}$.
+\end{frame}
+\begin{frame}{Estimation of $L$ and $G$}
+\begin{itemize}
+\item This estimator is somewhat more complicated than the one in Section 7.2. On the other hand,  the present estimator has the advantage that it is homogeneous,
+\begin{displaymath}
+\hat{L}_{\Phi}(ax,ay)=a\hat{L}_{\Phi}(x,y),
+\end{displaymath}
+for $a,x,y>0$.
+\item Therefore the functon
+\begin{displaymath}
+\hat{G}_0(x,y):=\exp\big(-\hat{L}_{\Phi}(1/x,1/y)\big)
+\end{displaymath}
+is an estimator of the max-stable distribution $G_0$.
+\end{itemize}
+
+\end{frame}
+\begin{frame}{Consistency: Theorem 7.3.1}
+Let $k=k(n)$ be a sequence of integers such that $k\to \infty, k/n\to 0, n\to \infty$. Then
+\begin{displaymath}
+\hat{\Phi}(\theta)\stackrel{p}{\to} \Phi(\theta),
+\end{displaymath}
+for $\theta=\pi/2$ and each $\theta \in [0,\pi/2)$ that is a continuity point of $\Phi$. Moreover,
+\begin{displaymath}
+\hat{L}_{\Phi}(x,y) \stackrel{p}{\to}L(x,y)
+\end{displaymath}
+for $x,y\ge 0$.
+\end{frame}
+\begin{frame}{Corollary 7.3.2}
+The statement of Theorem 7.3.1 imply the seeming stronger statements
+\begin{displaymath}
+\lim_{n\to \infty} P(\lambda (\hat{\Phi},\Phi)>\epsilon)=0
+\end{displaymath}
+for each $\epsilon>0$, where $\lambda$ is the $L\acute{e}vy$ distance:
+\begin{displaymath}
+\begin{split}
+\lambda &(\hat{\Phi},\Phi)\\ 
+              &=\inf \{\delta:\hat{\Phi}(\theta-\delta)-\delta \le \Phi(\theta)\le \hat{\Phi}(\theta+\delta)+\delta \, for \, all\, 0\le \theta \le \pi/2 \}
+\end{split}
+\end{displaymath}
+and for all $L>0$, 
+\begin{displaymath}
+\sup_{0<\le x,y\le L } |\hat{L}_{\Phi}(x,y)-L(x,y)|\stackrel{p}{\to}0.
+\end{displaymath}
+
+
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}{A Dependent Coefficient}
+\begin{itemize}
+\item Consider a random vector $(X_1,\dots,X_n)$ with distribution $F \in D(G)$,
+\item Let $K(t):=K_1(t)+\cdots+K_d(t)$ with $K_i(t)=1_{\{ X_i\ge U_i(t)\}}$,
+\item Define
+\begin{displaymath}
+\begin{split}
+\kappa :&=\lim_{t\to \infty} E(K(t)|K(t)\ge 1)\\
+            &=\lim_{t\to \infty} \dfrac{\sum_{j=1}^d P(X_j>U_j(t)}{P\big(\cup_{j=1}^d X_j>U_j(t)\big )}\\
+             &=\dfrac{L(1,0,\dots,0)+L(0,1,\dots,0)+\cdots+L(0,\cdots,0,1)}{L(1,1,\cdots,1)}\\
+             &=\frac{d}{L(1,1,\cdots,1)} :=\frac{d}{L}
+\end{split}
+\end{displaymath}
+\end{itemize}
+\end{frame}
+\begin{frame}{A Dependent Coefficient}
+\begin{itemize}
+\item The case of asymptotical independence corresponds to $\kappa=1$.
+\item The case of full dependence corresponds to $\kappa=d$,
+\item Define the following dependence coefficient
+\begin{displaymath}
+H:=\frac{\kappa-1}{d-1}=\frac{d-L}{(d-1)L},
+\end{displaymath}
+\item $H=0$ is equivalent to asymptotical independence and $H=1$ to full dependence.
+\item In $\mathbb{R}^2$ it is somewhat usula to consider the dependence coefficient 
+\begin{displaymath}
+\begin{split}
+\lambda :&=\lim_{t\to \infty} tP(X_1>U_1(t), X_2>U_2(t))\\
+&=2-L(1,1),
+\end{split}
+\end{displaymath}
+\item $\lambda=0$ corresponds to asymptotical independence and $\lambda=1$ to full dependence in $R^2$. 
+\end{itemize}
+\end{frame}
+\begin{frame}{A Dependent Coefficient}
+\begin{itemize}
+\item Howerver, the extension of $\lambda $ to higher dimensions does not share this property.
+\item One example is the random vector $(Y_1,Y_1,Y_2)$ with $Y_1,Y_2$ $i.i.d.$ with common distribution $\exp(-1/x)$.
+\item The exponent measure is concentrated on the intersection of these sets, that is $\{(x_1,x_2,x_3)\in\mathbb{R}^3: x_1=x_2,x_3=0\}$ and $\{ \{(x_1,x_2,x_3)\in\mathbb{R}^3:x_1=x_2=0\}$. There is no asymptotical independence.
+\item But 
+\begin{displaymath}
+\lim_{t\to \infty}  tP(X_1>U_1(t), X_2>U_2(t), X_3>U_3(t)) =0.
+\end{displaymath}
+\end{itemize}
+\end{frame}
+\begin{frame}{A Dependent Coefficient}
+\begin{itemize}
+\item Extend Theorem 7.2.2 to the $d$-dimensional case, we have 
+\begin{displaymath}
+\sqrt{k}(\hat{L}-L)\stackrel{d}{\to} W(1)-\sum_{i=1}^d L_i(1)W^{(i)}.
+\end{displaymath}
+\item Since
+$$\hat{H}:=\dfrac{d-\hat{L}(1,1,\dots,1)}{(d-1)\hat{L}(1,1,\dots,1)},$$ 
+ by Delta method, 
+ \begin{displaymath}
+\sqrt{k}(\hat{H}-H)\stackrel{d}{\to} N(0,\dfrac{d\sigma_L}{(d-1)L^2}).
+\end{displaymath}
+\item Howerve, when $H=0$, the asymptotical variance is zero and hence the result cannot be used to hypothesis test.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tail Porbability}
+\begin{itemize}
+\item Suppose one has independent observations $(X_1,Y_1),(X_2,Y_2),\dots,(X_n,Y_n)$ with distribution function $F$ and suppose that we are interested in estimating the probability
+\begin{displaymath}
+1-F(w,z),
+\end{displaymath}
+where $w>\max_{1\le i\le n}(X_i)$ and $z>\max_{1\le i\le n}Y_i$.
+\item We assume that both marginal distribution of $F$ are $1-1/x$, a more general situation will be considered in Chapter 8.
+\item Assume $F\in D(G)$, $w=w_n \to \infty, z=z_n \to \infty$ and moreover that
+\begin{displaymath}
+n(1-F(w_n,z_n))
+\end{displaymath}
+is bounded.
+\end{itemize}
+\end{frame}
+\begin{frame}{Tail Porbability}
+\begin{itemize}
+\item We further assume for simpicity that $w_n=cr_n$ and $z_n=dr_n$, for some positive sequence $r_n\to \infty$ and $c,d$ positive constants.
+\item  Since $F\in D(G)$
+$$p_n^{*}=1-F(w_n,z_n)=1-F(cr_n,dr_n)\sim \frac{1}{r_n} L(\frac{1}{c},\frac{1}{d})$$.
+\item  A nature estimator is 
+   $$\hat{p}_n^{*}:=\frac{1}{r_n} V_{n,k}(\frac{1}{c},\frac{1}{d})=\frac{1}{r_n}\frac{1}{k}\sum_{i=1}^n 1_{\{  X_i\ge nc/k\,\text{or} \, Y_i\ge nd/k  \}}$$
+\end{itemize}
+\end{frame}
+\begin{frame}{Tail Porbability}
+\begin{itemize}
+\item Let us look at the problem how to estimate 
+\begin{displaymath}
+p_n:=P(X>w_n, Y>z_n)=P(X>cr_n,Y>dr_n).
+\end{displaymath}
+\item One can try to estimate $p_n$ as before by
+\begin{displaymath}
+\begin{split}
+&\frac{1}{r_n}\frac{1}{k} \sum_{i=1}^n 1_{\{X_i \ge nc/k \, \text{and} \, Y_i\ge md/k\}} \\
+&=\frac{1}{r_n}\frac{1}{k} \sum_{i=1}^n1_{\{X_i\ge nc/k\}}+\frac{1}{r_n}\frac{1}{k} \sum_{i=1}^n1_{\{Y_i\ge nd/k\}}-
+\frac{1}{r_n}\frac{1}{k} \sum_{i=1}^n1_{\{X_i\ge nc/k \, \text{or}\, Y_i\ge nd/k\}}
+\end{split}
+\end{displaymath}
+\end{itemize}
+\end{frame}
+\begin{frame}{Tail Porbability}
+\begin{itemize}
+\item  If we assume that the components of $F$ are $i.i.d.$, the rand-hand side of the above relation , multiplied by $r_n$ , converges to $c^{-1}+d^{-1}-(c^{-1}+d^{-1})=0$. 
+\item The problem is that in the case of asymptotic independence we know not only that $P(X>tc \,\text{and}\, Y>td)$ is of lower order than $P(X>tc \, \text{or}\, Y>td)$ as $t\to \infty$, but the theory does not say anything about the asymptotical behaviour of the probability itself.
+\item So, we need more assumption.
+\end{itemize}
+\end{frame}
+\begin{frame}{Tail Porbability}
+\begin{itemize}
+ \item Assume the second-order condition
+ \begin{displaymath}
+ \lim_{t\to \infty} \dfrac{t(1-F(tx,ty))-L(\frac{1}{x},\frac{1}{•y})}{A(t)}=Q(x,y)
+ \end{displaymath}
+\item In cases of asymptotical independece this second order condition takes a simple form. Taking $x=\infty$ or $y=\infty$ we get
+\begin{displaymath}
+ \dfrac{t(1-F(tx,\infty))-\frac{1}{x}}{A(t)}\to Q(x,\infty),
+\end{displaymath} 
+ \begin{displaymath}
+ \dfrac{t(1-F(\infty,ty))-\frac{1}{y}}{A(t)}\to Q(\infty,y).
+\end{displaymath} 
+\end{itemize}
+\end{frame}
+\begin{frame}{Tail Porbability}
+\begin{itemize}
+\item These imply
+\begin{equation} 
+\begin{split}
+\dfrac{tP(X>tx, Y>ty)}{A(t)} &\to P(X>tx)+P(Y>ty)-P(X>tx\, \text{or}\, Y>ty)\\
+ &=:S(x,y).      
+\end{split} \tag{7.5.7}
+\end{equation}
+\item $P(X>t\, \text{or}\, Y>t)$ is  a regularly varying function of order $-1$.
+\item  $P(X>t\, \text{and}\, Y>t)$ is  a regularly varying function of order $\rho-1.$ In the original papers, the index is writeen as $-1/\eta, \eta\le 1$. Clearly, if there is no asymptotical independence, $\eta=1$.
+\item It is common to write $(7.5.7)$ as 
+\begin{displaymath}
+\dfrac{P(X>tx, Y>ty)}{P(X>t, Y>t}=S(x,y).
+\end{displaymath}
+\end{itemize}
+\end{frame}
+
+
+
+\begin{frame}{Tail Porbability}
+\begin{itemize}
+\item We take
+\begin{displaymath}
+\hat{p}_n:=(\frac{k}{n}r_n)^{-1/\hat{\eta}}\frac{k}{n}\frac{1}{k}\sum_{i=1}^n 1_{\{ X_i\ge nc/k, Y_i\ge nd/k\}}, 
+\end{displaymath}
+where $\eta$ is an estimator of $\eta$ to be discussed later.
+\item If $\hat{\eta}$ converges to $\eta$ at a certain rate, then we can prove
+\begin{displaymath}
+\frac{\hat{p}_n}{p_n}\stackrel{p}{\to}1.
+\end{displaymath}
+
+\end{itemize}
+\end{frame}
+\begin{frame}{Estimation of $\eta$}
+\begin{itemize}
+\item We now define the residual independence parameter $\eta$ generally.
+\item Suppose that for $x,y>0$,
+\begin{equation}
+\lim_{t\downarrow 0} \dfrac{P(1-F_1(X)<tx, 1-F_2(Y)<ty)}{P(1-F_1(X)<t, 1-F_2(Y)<t)}:=S(x,y), \tag{7.6.1}
+\end{equation}
+exists and is positive,
+\item Then $P(1-F_1(X)<t, 1-F_2(Y)<t)$ is regularly varing function with index $1/\eta$, for $a,x,y>0$,
+\begin{displaymath}
+S(ax,ay)=a^{1/\eta}S(x,y).
+\end{displaymath}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation of $\eta$}
+\begin{itemize}
+\item If there is no  symptotical independenc, the index $\eta$ has to be 1.
+\item $\eta<1$ imply asymptotical independence.
+\item $\eta=1$ does not imply asymptotical independence. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation of $\eta$}
+\begin{itemize}
+\item Condition (7.6.1) implies:
+\begin{displaymath}
+\lim_{t\downarrow 0}\dfrac{ P( \frac{1}{1-F_1(X)}\land \frac{1}{1-F_2(Y)}>tx)}{P(\frac{1}{1-F_1(X)}\land \frac{1}{1-F_2(Y)}>t )} =S(\frac{1}{x},\frac{1}{y})=x^{-1/\eta}S(1,1)=x^{-1/\eta}.
+\end{displaymath} 
+\item The probability distribution of the random variables $((1-F_1(X))\lor (1-F_2(Y))^{-1}$ is regularly with index $-1/\eta$.
+\item This suggests that we use a Hill-type estimator.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimation of $\eta$}
+
+Define 
+\begin{displaymath}
+T_i^{(n)}:=\dfrac{1}{\big( (1-F_1^{(n)}(X_i)\big) \lor \big( (1-F_2^{(n)}(Y_i)\big)}.
+\end{displaymath}
+Then Hill-type estimator then becomes
+\begin{displaymath}
+\hat{\eta}:=\frac{1}{k}\sum_{i=0}^{k-1} \log T_{n-i,n}^{(n)}-\log T_{n-k,n}^{(n)},
+\end{displaymath}
+where $\{T_{j,n}\}$ are the order statistics of $T_i^{(n)}, i=1,2,\dots,n$.
+\end{frame}
+
+\begin{frame}{Asymptotical normality}
+For the proof of Asymptotical normality, we need second order assumption.Assume further:
+\begin{itemize}
+\item
+\begin{displaymath}
+ \lim_{t\downarrow 0} \dfrac{ \frac{P(1-F_1(X)<tx, 1-F_2(Y)<ty)}{P(1-F_1(X)<t, 1-F_2(Y)<t)} -S(x,y)}{q_1(t)}=:Q(x,y)
+\end{displaymath}
+exists for all $x,y\ge 0$ with $x+y>0$.
+\item We assume that the convergence is uniform on $\{ (x,y)\in \mathbb{R}_{+}^2:x^2+y^2=1\}$.
+\item The function $S$ has first-order partial derivates $S_x,S_y$.
+\item $\lim_{t\downarrow 0}  t^{-1}P(1-F_(X)<t, 1-F_2(Y)<t):=l$ exists.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Asymptotical normality}
+For a sequence $k=k(n)$ of integers with $k\to \infty,k/n \to 0$ and $\sqrt{k}q_1(q^{\leftarrow}(k/n))\to 0, n\to \infty$,
+\begin{displaymath}
+\sqrt{k}(\hat{\eta}-\eta)
+\end{displaymath}
+is asymptotical normal with mean zero and variance
+\begin{displaymath}
+\eta^2(1-l)(1-2lS_x(1,1)S_y(1,1).
+\end{displaymath}
+\end{frame}
+
+\end{document}

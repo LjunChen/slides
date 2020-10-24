@@ -1,0 +1,278 @@
+%!TEX program =pdflatex
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+%%define new comand
+\def\argmin{\mathop{\rm arg~min}\limits}
+\def\argmin{\mathop{\rm arg~min}\limits}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+\newcommand{\brho}{\displaystyle{\large{\boldsymbol{\rho}}}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bfeta}{\boldsymbol{\eta}}
+\newcommand{\bPsi}{\boldsymbol{\Psi}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bvartheta}{\boldsymbol{\vartheta}}
+\newcommand{\bzero}{\mathbf{0}}
+\newcommand{\bone}{\mathbf{1}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\suit}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\msuit}[1]{\left[ #1 \right]}
+\author{de Haan and Ferreira(2006)}
+\title{Chapter 6}
+\date{}
+\begin{document}
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{EVT: biviraite case}
+Suppose $(X_1.Y_1), (X_2,Y_2),\dots$ be i.i.d. random vectors with distribution function $F$. Suppose that there exist sequences of constants $a_n,c_n>0, b_n,d_n \in \mathbb{R}$ a distribution function $G$ with non -degenerate marginals such that for all continuity points $(x,y)$ of $G$,
+\begin{equation}\tag{6.1.1}
+    \begin{aligned}
+        &\lim_{n \to \infty}P(\dfrac{\max\suit{X_1,X_2,\dots,X_n}-b_n}{a_n}\le x,\dfrac{\max\suit{X_1,X_2,\dots,X_n}-d_n}{c_n}\le y)   \\
+        &\quad\quad =G(x,y).
+    \end{aligned}
+\end{equation}
+
+Any limit distribution function $G$ in (6.1.1) with non-degenerate marginals is called a multivariate extreme value distribution.
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{EVT: bivirate case}
+Let $F_1,F_2$ denote the marginal distribution of $F$. Define $U_i(t):=F_i^{\leftarrow}(1-1/t), i=1,2.$ Then
+\begin{equation}
+    \begin{aligned}
+        \lim_{t\to \infty} \dfrac{U_1(nx)-b_n}{a_n} & =\dfrac{x^{\gamma}_1-1}{\gamma_1},      \\
+        \lim_{t\to \infty} \dfrac{U_2(nx)-d_n}{c_n} & =\dfrac{x^{\gamma}_2-1}{\gamma_2},   
+    \end{aligned}
+\end{equation}
+\end{frame}
+
+\begin{frame}
+    \frametitle{EVT: bivirate case}
+    Now, we return to (6.1.1), which can be written as 
+\begin{equation}\tag{6.1.8}
+    \lim_{n \to \infty} F^n (a_n x+b_n, c_ny+d_n)=G(x,y).
+\end{equation}
+ 
+If $x_n \to u, y_n \to v$, then 
+\begin{equation}\tag{6.1.9}
+    \lim_{n \to \infty} F^n (a_n x_n+b_n, c_ny_n+d_n)=G(u,v).
+\end{equation}
+Apply (6.1.9) with 
+$$
+x_n=\dfrac{U_1(nx)-b_n}{a_n},y_n=\dfrac{U_2(ny)-d_n}{c_n}
+$$
+then 
+$$
+\lim_{n\to \infty} F^n (U_1(nx),U_2(ny))=G\suit{\dfrac{x^{\gamma}-1}{\gamma},\dfrac{y^{\gamma}-1}{\gamma}}:=G_0(,xy)
+$$
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Corollary 6.1.3}
+For any $(x,y)$ for which $0<G_0(x,y)<1$,
+\begin{equation}\tag{6.1.11 }
+    \lim_{n\to \infty} n\set{1-F(U_1(nx),U_2(ny))}=-\log G_0(x,y)
+\end{equation}
+This also holds by replacing $n$ by $t$, where $t$ runs through the real numbers.
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Exponent Measure}
+There are set functions $v,v_1,v_2$ defined for all Borel sets $A\subset \mathbb{R}_{+}^2$ with 
+$$
+\inf_{(x,y)\in A}\max(x,y)>0 
+$$
+such that
+
+1.
+$$
+\begin{aligned}
+    v_n\set{(s,t)\in \mathbb{R}_{+}^2: s>x \ or \ t>y}&=n\suit{1-F(U_1(nx),U_2(ny))},\\
+    v\set{(s,t)\in \mathbb{R}_{+}^2: s>x\  or \ t>y}&=-\log G_0(x,y)
+\end{aligned}
+$$
+2. for all $a>0$ the set functions $v,v_1,v_2,\dots$ are finite measures on $\mathbb{R}_{+}^2 \ [0,a]^2$
+
+3.for  each Borel set $ A\subset \mathbb{R}_{+}^2$ with $\inf_{(x,y)\in A}\max(x,y)>0$ and $v(\partial A)=0$,
+$$
+\lim_{n \to \infty} v_n(A)=v(A).
+$$
+
+The measure $v$ is sometimes called the exponent measure of the extreme value distribution $G_0$.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Homogeneity of $v$}
+For any Borel set $A\subset \mathbb{R}_{+}^2$,with $\inf_{(x,y)\in A}\max(x,y)>0$ and $v(\partial A)=0$,
+$$
+v(aA)=a^{-1}v(A)
+$$
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{The Spectral Measure}
+    The homogeneity property of the exponent measure $v$ suggests a coordinate transformation in order to capitalize on that. 
+
+Examples are
+$$
+\left\{
+\begin{array}{l}
+    r(x,y)=\sqrt{x^2+y^2}\\
+    d(x,y)=\arctan \frac{y}{x}
+\end{array}   
+\right.
+$$
+$$
+\left\{
+\begin{array}{l}
+    r(x,y)=x+y\\
+    d(x,y)=\frac{x}{x+y}
+\end{array}   
+\right.
+$$
+$$
+\left\{
+\begin{array}{l}
+    r(x,y)=x \lor y\\
+    d(x,y)=\arctan \frac{x}{y}
+\end{array}   
+\right.
+$$
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{The Spectral Measure}
+    Let  us  start  with  the first transformation.  Define  for  constants $r>0$ and $\theta \in [0,\pi/2]$ the set
+    $$
+B_{r,\theta}=\set{(x,y)\in \mathbb{R}_{+}^{2*}: \sqrt{x^2+y^2}>r \ and \ \arctan \frac{y}{x}\le \theta}
+    $$
+    Clearly $B_{r,\theta}=rB_{1,\theta}$ and hence 
+    $$
+v(B_{r,\theta}):=r^{-1} v(B_{1,\theta}).
+    $$
+Set for $0\le \theta \le \pi/2$,
+$$
+\Psi(\theta):=v(B_{1,\theta}).
+$$
+\end{frame}
+
+\begin{frame}
+    \frametitle{Theorem 6.1.4}
+There exist a finite measure on $[0,\pi]$ such that for $x,y>0$,
+$$
+\begin{aligned}
+    G_0(x,y)=\exp\suit{-\int_0^{\pi/2}\suit{\frac{\cos \theta}{x}\lor \frac{\sin \theta}{y}}\Psi(d \theta)}
+\end{aligned}
+$$
+with the side functions
+$$
+\int_{0}^{\pi/2}\cos \theta \Psi(d\theta)=\int_{0}^{\pi/2}\sin \theta \Psi(d\theta)=1.
+$$
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{$L$}
+Define 
+$$
+L(x,y)=v\set{(s,t)\in \mathbb{R}_{+}^2:s>1/x \ or \ t>1/y}.
+$$
+ 
+Properties of the function $L$,
+\begin{itemize}
+    \item $L(ax.ay)=aL(x,y)$
+    \item $L(x,0)=L(0,x)=x$
+    \item $x\lor y \le L(x+y)\le x+y$
+    \item If $X,Y$ are independent, then $L(x,y)=x+y$. If $X,Y$ are completely positive dependent, then $L(x,y)=x\lor y$.
+    \item $L$ is continuous.
+    \item $L$ is convex.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{$Q_1, R, \chi$}
+Define the set $Q_1$ by 
+$$
+Q_1:=\set{(x,y)\in\mathbb{R}_{+}^2:-\log G_0(1/x,1/y)\le 1}
+$$
+The function $R$ is defined as 
+$$
+R(x,y)=x+y-L(x,y)
+$$
+The function $\chi$ is defined as 
+$$
+\chi(t)=-R(t,1)
+$$
+    
+
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Theorem 6.2.1}
+The followings are equivalent.
+
+1. 
+$$
+\lim_{t\to \infty} \dfrac{1-F(U_1(tx),U_2(ty))}{1-F(U_1(t),U_2(t))}=S(x,y)
+$$
+with $S(x,y)=\log G((x^{\gamma_1}-1)/\gamma,(y^{\gamma_2}-1)/\gamma)/\log G(0,0)$.
+
+2. For all $r>1$ and all $\theta \in [0,\pi/2]$ that   are continuity point of $\Psi$,
+
+$$
+P\suit{V^2+W^2>t^2r^2\ and \frac{W}{V}\le \tan \theta | V^2+W^2>t^2}\to r^{-1}\frac{\Psi(\theta)}{\Psi(\pi/2)}
+$$
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Asymptotic Independence}
+
+    Let $(X_1,\dots,X_d)$  be a random vector with distribution function  $F$. If
+    $$
+    \dfrac{P(X_i>U_i(t),X_j>U_j(t))}{P(X_i>U_i(t))}=0
+    $$
+    for all $1\le i<j\le d$, then 
+    $$
+\lim_{n \to \infty} F^n(a_n^{(1)}x_1+b_n^{(1)},\cdots, a_n^{(d)}x_1+b_n^{(d)})=\exp\suit{-\sum_{i=1}^d (1+\gamma_ix_i)^{-1/\gamma_i}}.
+    $$
+
+\end{frame}
+\end{document}
