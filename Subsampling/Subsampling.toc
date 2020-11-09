@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{General Subsampling Algorithm and its Asymptotic Properties}{6}{0}{1}
+\beamer@sectionintoc {2}{Optimal Subsampling Strategies}{12}{0}{2}
+\beamer@sectionintoc {3}{Simulation}{26}{0}{3}
+\beamer@sectionintoc {4}{Census Income Dataset}{41}{0}{4}

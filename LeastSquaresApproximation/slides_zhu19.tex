@@ -1,0 +1,320 @@
+\documentclass[11pt]{beamer}
+\usetheme{Boadilla}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\author{Zhu et.al}
+\title{Least Squares Approximation for a Distributed
+System}
+%\setbeamercovered{transparent} 
+%\setbeamertemplate{navigation symbols}{} 
+%\logo{} 
+%\institute{} 
+%\date{} 
+%\subject{} 
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}
+%\tableofcontents
+%\end{frame}
+
+
+\begin{frame}{Introduction}
+The common wisdom for addressing a distributed statistical problem
+can be classified into two categories.
+\begin{itemize}
+\item 'one-shot' or 'embarrassingly parallel' approach, which requires only one round of communication. {\color{blue} It might not achieve the best efficiency in statistical estimation.}
+\item iterative algorithms, which requires multiple iterations to be taken so that the estimation efficiency can be refined to match the global estimator.
+\end{itemize}
+
+
+\end{frame}
+
+\begin{frame}{Introduction}
+\begin{itemize}
+\item The sparse learning problem using $\ell_1$ shrinkage estimation.
+\item Ensure the model selection consistency and establish a criterion for consistent tuning parameter selection.
+\item The data possessed by different workers are allowed
+to be heterogeneous but share the same regression relationship.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Models and Notations}
+\begin{itemize}
+\item Total $N$ observations, which are indexed as $i=1,2,\ldots,N$, define $\mathcal{S}=\{1,2,\ldots,N\}$
+\item The $i$th observation is denoted by $Z_i=(X_i^T,Y_i)^T\in \mathbb{R}^{p+1}$.
+\item The observations are distributed across $K$ local workers, $\mathcal{S}_k$ collects observations distributed to $k$th worker and $\mathcal{S}=\cup_{k=1}^K \mathcal{S}_k$.
+\item Define $n=N/K$. Assume that $|\mathcal{S}_k|=n_k$ and that all $n_k$ diverge in the same order $O(n)$.
+\item Due to the data storing strategy,
+the data in different workers could be quite heterogeneous, e.g., they might be collected
+according to spatial regions.
+\item Despite the heterogeneity here, we assume they share the
+same regression relationship, the parameter $\theta_0\in \mathbb{R}^p$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Models and Notations}
+Let $ \mathcal{L}(\theta ; Z)$ be a plausible twice differentiable loss function. Define the global loss function as $\mathcal{L}(\theta)=N^{-1}\sum_{i=1}^N \mathcal{L}(\theta,Z_i)$.
+\vspace{3ex}
+
+The global estimator is $\hat{\theta}=\arg\min \mathcal{L}({\theta})$ and the true value is $\theta_0$.
+
+\vspace{3ex}
+It is assumed that $\hat{\theta}$ admits the following asymptotic rule
+$$
+\sqrt{N}(\hat{\theta}-\theta)\stackrel{d}{\to} N(0,\Sigma),
+$$
+where $\Sigma \in \mathbb{R}^{p\times p}$ is positive definite.
+\end{frame}
+
+\begin{frame}{Models and Notations}
+Define the local loss function in the $k$ th worker as 
+$$
+\mathcal{L}_k(\theta)=n_k^{-1}\sum_{i\in \mathcal{S}_k}\mathcal{L}(\theta;Z_i)
+$$
+\vspace{3ex}
+
+The local minimizer is 
+$$\hat{\theta}_k=\arg \min \mathcal{L}_k(\theta)
+$$
+\vspace{3ex}
+
+We assume that
+$$
+\sqrt{n_k}(\hat{\theta}_k-\theta_0)\stackrel{d}{\to} N(0,\Sigma_k)
+$$
+\end{frame}
+
+\begin{frame}{Least Squares Approximation}
+Approximate the global loss function using Taylor's expansion
+$$
+\begin{aligned}
+\mathcal{L}(\theta) &=N^{-1} \sum_{k=1}^{K} \sum_{i \in \mathcal{S}_{k}} \mathcal{L}\left(\theta ; Z_{i}\right)\\
+&=N^{-1} \sum_{k=1}^{K} \sum_{i \in \mathcal{S}_{k}}\left\{\mathcal{L}\left(\theta ; Z_{i}\right)-\mathcal{L}\left(\widehat{\theta}_{k} ; Z_{i}\right)\right\}+C_{1} \\
+& \approx N^{-1} \sum_{k=1}^{K} \sum_{i \in \mathcal{S}_{k}}\left(\theta-\widehat{\theta}_{k}\right)^{\top} \ddot{\mathcal{L}}\left(\widehat{\theta}_{k} ; Z_{i}\right)\left(\theta-\widehat{\theta}_{k}\right)+C_{2}
+\end{aligned}
+$$
+The last equation uses the fact that $\dot{\mathcal{L}}_k(\hat{\theta}_k)=0$.
+\end{frame}
+
+\begin{frame}{Least Squares Approximation}
+The weighted least squares objective function
+$$
+\begin{aligned}
+\widetilde{\mathcal{L}}(\theta) &=N^{-1} \sum_{k}\left(\theta-\widehat{\theta}_{k}\right)^{\top}\left\{\sum_{i \in \mathcal{S}_{k}} \ddot{\mathcal{L}}\left(\widehat{\theta}_{k} ; Z_{i}\right)\right\}\left(\theta-\widehat{\theta}_{k}\right) \\
+& \stackrel{\text { def }}{=} \sum_{k}\left(\theta-\widehat{\theta}_{k}\right)^{\top} \alpha_{k} \widehat{\Sigma}_{k}^{-1}\left(\theta-\widehat{\theta}_{k}\right)
+\end{aligned}
+$$
+where $\alpha_k=n_k/N$.  
+The solution is (weighted least squares estimator(WLSE))
+$$
+\widetilde{\theta}=\arg \min _{\theta} \widetilde{\mathcal{L}}(\theta)=\left(\sum_{k} \alpha_{k} \widehat{\Sigma}_{k}^{-1}\right)^{-1}\left(\sum_{k} \alpha_{k} \widehat{\Sigma}_{k}^{-1} \widehat{\theta}_{k}\right).
+$$
+\end{frame}
+
+\begin{frame}{Remarks about WLSE}
+\begin{itemize}
+\item The local worker sends $\hat{\theta}_k$ and $\hat{\Sigma}_k$  to the master node
+
+\vspace{2ex}
+
+\item Then the master node produces WLSE by the above equation.
+
+\vspace{2ex}
+
+\item The above WLSE requires only one round of communication.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Assumptions}
+\begin{itemize}
+\item[(C1)] The parameter space $\Theta$ is a compact and convex subset of $\mathbb{R}^p$. $\theta_0$ lies in the interior of $\Theta$.
+\item[(C2)] Covariates $X_i$($i\in \mathcal{S}_k$) from $k$th worker are iid from $F_k(x)$.
+\item[(C3)] For any $\delta>0$, there exists $\varepsilon>0$ such that
+$$
+\begin{array}{l}
+\lim _{n \rightarrow \infty} \inf P\left\{\inf _{\left\|\theta^{*}-\theta_{0}\right\| \geq \delta, 1 \leq k \leq K}\left(\mathcal{L}_{k}\left(\theta^{*}\right)-\mathcal{L}_{k}\left(\theta_{0}\right)\right) \geq \epsilon\right\}=1 \\
+\text { and } E\left\{\left.\frac{\partial \mathcal{L}_{k}(\theta)}{\partial \theta}\right|_{\theta=\theta_{0}}\right\}=0
+\end{array}
+$$
+\item[(C4)]Define
+$$
+\Omega_{k}(\theta)=E\left\{\frac{\partial \mathcal{L}\left(\theta ; Z_{i}\right)}{\partial \theta} \frac{\partial \mathcal{L}\left(\theta ; Z_{i}\right)}{\partial \theta^{\top}} \mid i \in \mathcal{S}_{k}\right\}
+$$
+Assume $\Omega_k(\theta)$ is nonsingular at $\theta_0$. Let $\Sigma_k=\{\Omega_k(\theta_0)\}^{-1}$ and $\Sigma=\{\Sigma_k \alpha_k\Omega(\theta_0)\}^{-1}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Assumptions}
+\begin{itemize}
+\item[(C5)] Define $B(\delta)=\{\theta^*\in \Theta | ||\theta^*-\theta_0||\le \delta\}$. There exists function $M_{ijl}(Z)$ and $\delta>0$ such that
+$$
+\left|\frac{\partial^{3}}{\partial \theta_{i} \partial \theta_{j} \partial \theta_{l}} \mathcal{L}\left(\theta^{*} ; Z\right)\right| \leq M_{i j l}(Z), \quad \text { for all } \quad \theta^{*} \in B(\delta)
+$$
+where $E\left\{M_{i j l}\left(Z_{m}\right) \mid m \in \mathcal{S}_{k}\right\}<\infty \text { for all } 1 \leq i, j, l \leq p \text { and } 1 \leq k \leq K$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Propsition 1}
+Assume Conditions (C1)-(C5). Then, we have
+$$
+\sqrt{N}\left(\widetilde{\theta}-\theta_{0}\right)=V\left(\theta_{0}\right)+B\left(\theta_{0}\right)
+$$
+with $\operatorname{cov}\left\{V\left(\theta_{0}\right)\right\}=\Sigma \text { and } B\left(\theta_{0}\right)=O_{p}(K / \sqrt{N}), \text { where } \Sigma=\left(\sum_{k=1}^{K} \alpha_{k} \Sigma_{k}^{-1}\right)^{-1}$.
+\end{frame}
+
+\begin{frame}{Theorem 1}
+Assume Conditions (C1)-(C5) and further assume $n/N^{1/2}\to \infty$. Then we have $\sqrt{N}(\tilde{\theta}-\theta_0)\stackrel{d}{\to} N(0,\Sigma)$, which
+achieves the same asymptotic normality as the global estimator $\hat{\theta}$.
+\end{frame}
+
+\begin{frame}{Distributed Adaptive Lasso Estimation}
+How to conduct variable selection on a distributed system has not been sufficiently investigated.
+
+{\color{blue} Previous work: Lee et al., 2015; Battey et al., 2015; Wang et al., 2017a;
+Jordan et al., 2018}
+\vspace{3ex}
+
+Notations:
+\begin{itemize}
+\item The first $d_0$ to be nonzero. i.e. $\theta_j\ne 0$ for $1\le j \le d_0$. Denote $\mathcal{M}_T=\{1,2,\ldots,d_0\} $ to be the true model.
+\item Let $\mathcal{M}=\{i_1,\ldots,i_d\}$ be an  arbitrary candidate model.
+\item For an arbitrary vector $v$, define $v^{(\mathcal{M})}=\left(v_{i}: i \in \mathcal{M}\right)^{\top} \in \mathbb{R}^{|\mathcal{M}|} \text { and } v^{(-\mathcal{M})}=\left(v_{i}: i \notin \mathcal{M}\right)^{\top} \in \mathbb{R}^{p-|\mathcal{M}|}$.
+\item  For an arbitrary Matrix $M$, define $M^{(\mathcal{M})}=\left(m_{j_{1} j_{2}}: j_{1}, j_{2} \in \mathcal{M}\right) \in \mathbb{R}^{|\mathcal{M}| \times|\mathcal{M}|}$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Adaptive Lasso}
+Consider the adaptive Lasso objective function on the master
+$$
+Q_{\lambda}(\theta)=\widetilde{\mathcal{L}}(\theta)+\sum_{j} \lambda_{j}\left|\theta_{j}\right|
+$$
+
+Define $\tilde{\theta}_{\lambda}=\arg\min Q_{\lambda}(\theta)$. 
+\end{frame}
+
+\begin{frame}{Theorem 2}
+Assume the conditions (C1)-(C5). Let $a_{\lambda}=\max\{\lambda_j, j\le d_0\}$ and $b_{\lambda}=\min\{\lambda_j, j>d_0\}$. Then the following results holds.
+\begin{itemize}
+\item If $\sqrt{N}a_{\lambda}\stackrel{p}{\to} 0$, then
+$\tilde{\theta}_{\lambda}-\theta=O_p(N^{-1/2})$.
+\item If $\sqrt{N}a_{\lambda}\stackrel{p}{\to} 0$ and $\sqrt{N}b_{\lambda} \stackrel{p}{\to} \infty$,
+$$
+P\left(\widetilde{\theta}_{\lambda}^{\left(-\mathcal{M}_{T}\right)}=0\right) \rightarrow 1.
+$$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Covariance Assumption}
+\begin{itemize}
+\item[(C6)] Define the global unpenalized estimator as $\hat{\theta}_M = \arg \min _{\left\{\theta \in \mathbb{R}^{p}: \theta_{j}=0, \forall j \notin \mathcal{M}\right\}} \mathcal{L}(\theta)$. Assume for the global estimator $\hat{\theta}_M$ with $ \mathcal{M} \supset \mathcal{M}_{T}$ that $\sqrt{N}\left(\widehat{\theta}_{\mathcal{M}}^{(\mathcal{M})}-\theta_{\mathcal{M}}^{(\mathcal{M})}\right) \rightarrow_{d} N\left(0, \Sigma_{\mathcal{M}}\right)=N\left(0, \Omega_{\mathcal{M}}^{-1}\right)$ . Further assume for any $\mathcal{M} \supset \mathcal{M}_{T}$ that $\Omega_{\mathcal{M}}=\Omega_{\mathcal{M}_{F}}^{(\mathcal{M})}$, where $\mathcal{M}_F=\{1,2,\ldots,p\}$ denotes the whole set.
+\end{itemize}
+
+Condition (C6) does not seem very intuitive. Nevertheless, it is a condition that is well satisifed by most maximum likelihood. estimators
+\end{frame}
+
+\begin{frame}{Theorem 3}
+
+Assume Conditions (C1)-(C6). Let $\sqrt{N}a_{\lambda}\stackrel{p}{\to} 0$ and $\sqrt{N}b_{\lambda} \stackrel{p}{\to} \infty$, then it holds that
+$$
+\sqrt{N}\left(\widetilde{\theta}_{\lambda}^{\left(\mathcal{M}_{T}\right)}-\theta^{\left(\mathcal{M}_{T}\right)}\right) \rightarrow_{d} N\left(0, \Sigma_{\mathcal{M}_{T}}\right).
+$$
+\end{frame}
+
+\begin{frame}{Remarks about Theorem 3}
+\begin{itemize}
+\item as long as the tuning parameters are approximately
+selected, the resulting estimator is selection consistent and as efficient as the
+oracle estimator.
+\item Specify $\lambda_j=\lambda_0 |\tilde{\theta}_j|^{-1}$.
+\item Since $\tilde{\theta}_j$ is $\sqrt{N}$ -consistent, then as long as as $\lambda_0$ satisfies the condition $\lambda_{0} \sqrt{N} \rightarrow 0 \text { and } \lambda_{0} N \rightarrow \infty$, then the conditions in Theorem 2 and Theorem 3 hold.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Distributed Bayes Information Criterion}
+distributed Bayesian information criterion (DBIC)-based criterion 
+$$
+\mathrm{DBIC}_{\lambda}=\left(\widetilde{\theta}_{\lambda}-\widetilde{\theta}\right)^{\top} \widehat{\Sigma}^{-1}\left(\widetilde{\theta}_{\lambda}-\widetilde{\theta}\right)+\log N \times d f_{\lambda} / N
+$$
+where $df_{\lambda}$ is the number of nonzero elements in $\tilde{\theta}_{\lambda}$.
+
+Define the set of nonzero elements of $\hat{\theta}_{\lambda}$ by $\mathcal{M}_{\lambda}$. Define
+
+$$
+\begin{array}{c}
+\mathbb{R}_{-}=\left\{\lambda \in \mathbb{R}^{p}: \mathcal{M}_{\lambda}  \not\supset \mathcal{M}_{T}\right\}, \mathbb{R}_{0}=\left\{\lambda \in \mathbb{R}^{p}: \mathcal{M}_{\lambda}=\mathcal{M}_{T}\right\} \\
+\mathbb{R}_{+}=\left\{\lambda \in \mathbb{R}^{p}: \mathcal{M}_{\lambda} \supset \mathcal{M}_{T}, \mathcal{M}_{\lambda} \neq \mathcal{M}_{T}\right\}
+\end{array}
+$$
+where $\mathbb{R}_{-}$ denotes the under fitted model, and $\mathbb{R}_{+}$ denotes an over fitted model.
+\end{frame}
+
+\begin{frame}{Theorem 4}
+Assume Conditions (C1)-(C6). Define a reference tuning parameter
+sequence $\{\lambda_N \in \mathbb{R}^p\}$, where the first $d_0$ elements of $\lambda_N$ are $1/N$ and and the remaining
+elements are $\log N/N$. Then we have
+$$
+P\left(\inf _{\lambda \in \mathbb{R}_{-} \cup \mathbb{R}_{+}} D B I C_{\lambda}>D B I C_{\lambda_{N}}\right) \rightarrow 1.
+$$
+\end{frame}
+
+
+\begin{frame}{Simulation Models and Setting}
+For each model, 
+we consider two typical settings to verify the numerical performance of the proposed
+method. 
+\begin{itemize}
+\item The first strategy is to distribute data in a complete random manner. $X_{ij}$ are sampled from the standard normal
+distribution N(0,1).
+\item The second strategy allows for covariate distribution on different workers
+to be heterogeneous.  On the $k$th worker, the covariates are sampled
+from the multivariate normal distribution $N(\mu_k,\Sigma_k)$, where $\mu_k\sim U[-1,1]$ and $\Sigma_k=(\rho_k^{|j_1-j_2|})$ with $\rho_k\sim U[0.3,0.4]$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Simulation Models and Setting}
+Examples:
+\begin{itemize}
+\item Linear Regression $\theta_0=(3,1.5,0,0,2,0,0,0)$
+\item Logistic Regression $\theta_0=(3,0,0,1.5,0,0,2,0)$
+\item Possion Regression $\theta_0=(0.8, 0, 0, 1, 0, 0,-0.4, 0, 0)$
+\item Cox Model. We set the hazard function to be $h(t_i|x_i)=\exp(X_i^T\theta_0)$,where $t_i$ is the survival time from the $i$th subject. $\theta_0=(0.8, 0, 0, 1, 0, 0,0.6, 0, 0)$. Censoring time is generated independently
+from an exponential distribution with a mean $\mu_i \exp(X_i^T\theta_0)$ where $u_i$  sampled
+from a uniform distribution $U[1,3]$.
+\item Ordered Probit Regression. The ordinal responses are independently generated as
+follows:
+$$
+P\left(Y_{i}=l \mid X_{i}, \theta_{0}\right)=\left(\begin{array}{ll}
+\Phi\left(c_{1}-X^{\top} \theta_{0}\right) & l=1 \\
+\Phi\left(c_{l}-X^{\top} \theta_{0}\right)-\Phi\left(c_{l-1}-X^{\top} \theta_{0}\right) &  2 \leq l \leq L-1 \\
+1-\Phi\left(c_{L-1}-X^{\top} \theta_{0}\right)  & l=L
+\end{array}\right.
+$$
+where $\theta_0=(0.8, 0, 0, 1, 0, 0,0.6, 0, 0)$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Simulation Results : I}
+Page 42 -Page 46
+\end{frame}
+
+
+\begin{frame}{Airline Data}
+\begin{itemize}
+\item The dataset considered here is the U.S. Airline Dataset. It contains detailed flight  information about
+U.S. airlines from 1987 to 2008.
+\item The task is to predict the delayed status of a 
+fight given all other flight information.
+\end{itemize}
+
+The results are in Page 27.
+\end{frame}
+\end{document}

@@ -1,0 +1,5 @@
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{A two step Procedure}{5}{0}{2}
+\beamer@sectionintoc {3}{Theoretical analysis}{11}{0}{3}
+\beamer@sectionintoc {4}{Practical aspects}{29}{0}{4}
+\beamer@sectionintoc {5}{Monte Carlo experiments}{33}{0}{5}

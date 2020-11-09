@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Past Work on Sparse Clustering}{5}{0}{1}
+\beamer@sectionintoc {2}{The Proposed Sparse Clustering Framework}{11}{0}{2}
+\beamer@sectionintoc {3}{Sparse K–means Clustering}{16}{0}{3}
+\beamer@sectionintoc {4}{Sparse Hierarchical Clustering}{30}{0}{4}
