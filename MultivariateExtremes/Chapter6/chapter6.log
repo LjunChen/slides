@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.14)  9 NOV 2020 11:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.14)  11 NOV 2020 13:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -694,6 +694,18 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 
 ] [14
 
+] [15
+
+] [16
+
+] [17
+
+] [18
+
+] [19
+
+] [20
+
 ]
 \tf@nav=\write6
 \openout6 = `chapter6.nav'.
@@ -704,27 +716,27 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 \tf@snm=\write8
 \openout8 = `chapter6.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 278.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 278.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 385.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 385.
  (./chapter6.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 278.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 278.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 385.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 385.
 Package rerunfilecheck Info: File `chapter6.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 18011 strings out of 480608
- 347299 string characters out of 5903615
- 594655 words of memory out of 5000000
- 33432 multiletter control sequences out of 15000+600000
+ 18089 strings out of 480608
+ 348981 string characters out of 5903615
+ 596655 words of memory out of 5000000
+ 33498 multiletter control sequences out of 15000+600000
  543192 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 58i,15n,67p,841b,563s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on chapter6.pdf (14 pages, 149072 bytes).
+ 58i,15n,67p,841b,575s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on chapter6.pdf (20 pages, 158236 bytes).
 PDF statistics:
- 455 PDF objects out of 1000 (max. 8388607)
- 410 compressed objects within 5 object streams
- 29 named destinations out of 1000 (max. 500000)
- 67 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 615 PDF objects out of 1000 (max. 8388607)
+ 563 compressed objects within 6 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 73 words of extra memory for PDF output out of 10000 (max. 10000000)
 
