@@ -16,6 +16,9 @@
 \begin{frame}
 \titlepage
 \begin{center}
+	Chapter 7 of "Extreme value theory: An Introduction"
+
+	\bigskip
 	Presented by Liujun Chen.
 \end{center}
 \end{frame}
@@ -43,6 +46,12 @@ L(x,y):=v\{ (s,t)\in \mathbb{R}_{+}^2: s>1/x \, \text{or }\, t>1/y\}.
 \item $L$ is continous and convex.
 \end{enumerate}
 \end{frame}
+
+
+
+
+
+
 \begin{frame}{Estimation of $L$}
 Recall that:
 \begin{equation}\label{estimate L}
@@ -138,10 +147,38 @@ Sketch of the proof:
 \begin{itemize}
 \item Finite-dimensional distributions\par 
 \quad Lyapunov's form of the central limit theorem.\par 
-\quad How to get the asymptotical covariace matrix?
+\quad Cram\'er Wold theorem 
 \item Tightness                                                               
 \end{itemize}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Cram\'er Wold Theorem}
+Let $\boldsymbol{X}_n=(X_{n1},X_{n2},\dots,X_{nk})$
+and $\boldsymbol{X}=(X_1,X_2,\dots,X_k)$ be random vectors of dimension $k$.
+
+\bigskip
+
+Then $\boldsymbol{X}_n$ converges  to $\boldsymbol{X}$ if and only if 
+$$
+\sum_{i=1}^k t_i X_{ni}\stackrel{d}{\to} \sum_{i=1}^k t_i X_{i}.
+$$
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Tightness}
+	A sequences of random variables is tight if, for all $\varepsilon>0$, there exists a compact set $K=K(\varepsilon)$ such that 
+	$$
+\sup_n P(X_n\in K^c)< \varepsilon.
+	$$
+
+	
+
+\end{frame}
+
+
 \begin{frame}{Corollary 7.2.4}
 If Moreove (\ref{7.2.8}) holds, $k\to \infty, k(n)=o(n^{2\alpha/(1+2\alpha)})$ as $n \to \infty$, then
 \begin{displaymath}
@@ -153,6 +190,8 @@ Sketch of the proof:\par
 \quad Skorohod's Representation.
 
 \end{frame}
+
+
 
 \begin{frame}{Skorohod's Representation}
 	Let $\{X_n, n\ge 1\}$ be random variables such that 
