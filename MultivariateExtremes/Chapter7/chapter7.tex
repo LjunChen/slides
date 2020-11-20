@@ -522,7 +522,7 @@ p_n:=P(X>w_n, Y>z_n)=P(X>cr_n,Y>dr_n).
 \item  $P(X>t\, \text{and}\, Y>t)$ is  a regularly varying function of order $\rho-1.$ In the original papers, the index is writeen as $-1/\eta, \eta\le 1$. Clearly, if there is no asymptotical independence, $\eta=1$.
 \item It is common to write $(7.5.7)$ as 
 \begin{displaymath}
-\dfrac{P(X>tx, Y>ty)}{P(X>t, Y>t}=S(x,y).
+\dfrac{P(X>tx, Y>ty)}{P(X>t, Y>t)}=S(x,y).
 \end{displaymath}
 \end{itemize}
 \end{frame}
@@ -536,14 +536,36 @@ p_n:=P(X>w_n, Y>z_n)=P(X>cr_n,Y>dr_n).
 \hat{p}_n:=(\frac{k}{n}r_n)^{-1/\hat{\eta}}\frac{k}{n}\frac{1}{k}\sum_{i=1}^n 1_{\{ X_i\ge nc/k, Y_i\ge nd/k\}}, 
 \end{displaymath}
 where $\eta$ is an estimator of $\eta$ to be discussed later.
-\item If $\hat{\eta}$ converges to $\eta$ at a certain rate, then we can prove
-\begin{displaymath}
-\frac{\hat{p}_n}{p_n}\stackrel{p}{\to}1.
-\end{displaymath}
-
+\item We now write 
+$$
+\frac{\hat{p}_n}{p_n}=\frac{\frac{1}{k}\sum_{i=1}^n 1_{\{ X_i\ge nc/k, Y_i\ge nd/k\}}}{\frac{n}{k}q(n/k)S(c,d)} \frac{S(c,d)q(n/k)\suit{r_nk/n}^{-1/\hat{\eta}}}{P(X>w_n, Y>z_n)}.
+$$
+\item By the definition of $S$, we have that 
+$$
+P(X>w_n, Y>z_n) =P(X>r_n c, Y>r_n d)\sim q(r_n)S(c,d).
+$$
+\item  And it is easy(similar to the  proof of Theorem 7.2.1) to prove that 
+$$
+\frac{\frac{1}{k}\sum_{i=1}^n 1_{\{ X_i\ge nc/k, Y_i\ge nd/k\}}}{\frac{n}{k}q(n/k)S(c,d)}  \to 1.
+$$
 \end{itemize}
 \end{frame}
-\begin{frame}{Estimation of $\eta$}
+
+
+\begin{frame}
+	\frametitle{Tail Probability}
+We can show that $\hat{p}_n/p_n \stackrel{P}{\to} 1$, if 
+$$
+\frac{q(n/k)\suit{\frac{k}{n}r_n}^{-1/\eta}}{q(r_n)}\to 1
+$$
+and 
+$$
+\suit{\frac{k}{n}r_n}^{\frac{1}{\eta}-\frac{1}{\hat{\eta}}}\stackrel{P}{\to} 1.
+$$
+	
+
+\end{frame}
+\begin{frame}{ $\eta$}
 \begin{itemize}
 \item We now define the residual independence parameter $\eta$ generally.
 \item Suppose that for $x,y>0$,
@@ -551,17 +573,34 @@ where $\eta$ is an estimator of $\eta$ to be discussed later.
 \lim_{t\downarrow 0} \dfrac{P(1-F_1(X)<tx, 1-F_2(Y)<ty)}{P(1-F_1(X)<t, 1-F_2(Y)<t)}:=S(x,y), \tag{7.6.1}
 \end{equation}
 exists and is positive,
-\item Then $P(1-F_1(X)<t, 1-F_2(Y)<t)$ is regularly varing function with index $1/\eta$, for $a,x,y>0$,
+\item Then $P(1-F_1(X)<t, 1-F_2(Y)<t)$ is regularly varying function with index $1/\eta$, for $a,x,y>0$,
 \begin{displaymath}
 S(ax,ay)=a^{1/\eta}S(x,y).
 \end{displaymath}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Estimation of $\eta$}
+\begin{frame}
+	\frametitle{$\eta$}
+Note that the domain of attraction condition implies that 
+$$
+\begin{aligned}
+	\lim_{t\downarrow 0} t^{-1} P&(1-F_1(X)\le tx,1-F_2(Y)<ty)\\
+	& =\lim_{t\downarrow 0} t^{-1} P(1-F_1(X)\le tx)+\lim_{t\downarrow 0} t^{-1}P(1-F_2(Y)\le ty)\\
+	&\quad - \lim_{t\downarrow 0} t^{-1}P(1-F_1(X)\le tx, \ or \ 1-F_2(Y)<ty)\\
+	&=x+y-L(x,y)
+\end{aligned}
+$$
+This expression is zero for all $x,y>0$ in the case of asymptotic independence and positive	in all other cases.
+
+\end{frame}
+
+\begin{frame}{$\eta$}
 \begin{itemize}
-\item If there is no  symptotical independenc, the index $\eta$ has to be 1.
+\item If there is no  asymptotical independence, the index $\eta$ has to be 1.
+\bigskip
 \item $\eta<1$ imply asymptotical independence.
+\bigskip
 \item $\eta=1$ does not imply asymptotical independence. 
 \end{itemize}
 \end{frame}
@@ -600,7 +639,7 @@ For the proof of Asymptotical normality, we need second order assumption.Assume 
 exists for all $x,y\ge 0$ with $x+y>0$.
 \item We assume that the convergence is uniform on $\{ (x,y)\in \mathbb{R}_{+}^2:x^2+y^2=1\}$.
 \item The function $S$ has first-order partial derivates $S_x,S_y$.
-\item $\lim_{t\downarrow 0}  t^{-1}P(1-F_(X)<t, 1-F_2(Y)<t):=l$ exists.
+\item $\lim_{t\downarrow 0}  t^{-1}P(1-F_1(X)<t, 1-F_2(Y)<t):=l$ exists.
 \end{itemize}
 \end{frame}
 
