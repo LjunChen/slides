@@ -4,20 +4,46 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\author{L. Chen}
+
+\newcommand{\E}{\operatorname{E}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+\newcommand{\Var}{\operatorname{Var}}
+\renewcommand{\P}{\operatorname{P}}
+\renewcommand{\mathbf}{\boldsymbol}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\suit}[1]{\left(#1\right)}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\td}{\stackrel{d}{\to}}
+\newcommand{\tp}{\stackrel{P}{\to}}
+\newcommand{\toprule}{\hline\hline}
+\newcommand{\bottomrule}{\hline\hline}
+\newcommand{\midrule}{\hline}
+
+\author{de Haan and Ferreira(2006)}
 \title{Estimation of the Probability of a Failsure Set}
 \usecolortheme{beaver}
 %\setbeamercovered{transparent} 
 %\setbeamertemplate{navigation symbols}{} 
 %\logo{} 
-\institute{Fudan University} 
+
 %\date{} 
 %\subject{} 
 \begin{document}
-
 \begin{frame}
-\titlepage
-\end{frame}
+  \titlepage
+  \begin{center}
+    Chapter 8 of "Extreme value theory: An Introduction"
+  
+    \bigskip
+    Presented by Liujun Chen.
+  \end{center}
+  \end{frame}
 
 
 \AtBeginSection[] { 
@@ -25,7 +51,7 @@
     \frametitle{Outline} 
     \tableofcontents[currentsection,hideothersubsections] 
   \end{frame} 
-  \addtocounter{framenumber}{-1}  %目录页不计算页码
+  %\addtocounter{framenumber}{-1}  %目录页不计算页码
 }
 
 
@@ -35,8 +61,7 @@
 \section{Introduction}
 \begin{frame}{Introduction}
 \begin{itemize}
-\item In this Chapter, we we want to estimate $P((X,Y)\in C_n)$. Clearly, there is no observation in the failure set. In fact, the observations are all some distance away from
-the failure set.
+\item In this Chapter, we we want to estimate $P((X,Y)\in C_n)$. Clearly, there is no observation (or very few) in the failure set.
 \item One Example. The wave height (HmO) and still water level (SWL) have
 been recorded during 828 storm events that are relevant for the Pettemer Zeewering. The failure set:
 \begin{displaymath}
@@ -48,7 +73,7 @@ C=\{ (HmO,SWL): 0.3HmO + SWL > 7.6\}.
 
 \begin{frame}{Basic Assumptions}
 \begin{itemize}
-\item There exist normalizing functions $a_1>0,a_2>0$ and $b_1, b_2$ real, , and a distribution function $G$ with nondegenerate marginals, such that for all continuity points $(x,y)$ of $G$,
+\item There exist normalizing functions $a_1>0,a_2>0$ and $b_1, b_2$ real , and a distribution function $G$ with nondegenerate marginals, such that for all continuity points $(x,y)$ of $G$,
 $$\lim_{t \to \infty} F^t(a_1(t)x+b_1(t),a_2(t)y+b_2(t))=G(x,y).$$
 \item Moreover, we choose the functions $a_1,a_2,b_1,b_2$ such that
 \begin{displaymath}
@@ -82,17 +107,33 @@ p_n: &=P((X,Y)\in C_n)\\
 \end{equation}
 with
 \begin{displaymath}
-Q_n:=\{  \big(    (1+\gamma_1 \dfrac{X-b_1(t)}{a_1(t)})^{1/\gamma_1}, (1+\gamma_2 \dfrac{Y-b_2(t)}{a_2(t)})^{1/\gamma_2}            \big):(x,y)\in C_n        \}.
+Q_n:=\{  \big(    (1+\gamma_1 \dfrac{x-b_1(t)}{a_1(t)})^{1/\gamma_1}, (1+\gamma_2 \dfrac{y-b_2(t)}{a_2(t)})^{1/\gamma_2}            \big):(x,y)\in C_n        \}.
 \end{displaymath}
 We divide the set $Q_n$ by a large positive constant $c_n$ such that $Q_n/c_n$ contains a small portion of the
 observations. This way we can estimate $v(Q_n/c_n)$ and hence $v(Q_n):=v(Q_n/c_n)/c_n$.
+\end{frame}
+
+\begin{frame}
+  \frametitle{The Probability of a Failure Set}
+Summing up, the procedure involves the following steps:
+\begin{itemize}
+  \item Marginal transformations
+  $$
+  \begin{aligned}
+X_i &\to \suit{1+\gamma_1 \frac{X_i-b_1(t)}{a_1(t)}}^{1/\gamma_1}\\
+  Y_i &\to \suit{1+\gamma_2 \frac{Y_i-b_2(t)}{a_2(t)}}^{1/\gamma_2}
+  \end{aligned}
+  $$
+  in order to transform the marginal distribution approximately to a standard Pareto distribution.
+  \item Use the homogeneity property of the measure $v$, in order to pull the transformed failure set to the observations.
+\end{itemize}
 \end{frame}
 
 
 \begin{frame}{The Probability of a Failure Set}
 \begin{itemize}
 \item Let $k$ be an intermediate sequence, $i.e., $ $k=k(n)\to \infty, k/n \to 0,n\to \infty$.
-\item Suppose the failure set C n can be written as
+\item Suppose the failure set $C_n$ can be written as
 \begin{equation}\tag{8.1.9}
 \begin{split}
 C_n=\{\big( & a_1(\frac{n}{k})\frac{(c_nx)^{\gamma_1}-1}{\gamma_1}+b_1(\frac{n}{k}),\\
@@ -105,6 +146,9 @@ where $c_n$ is a positive sequence and $S$ is a fixed open set of $\mathbb{R}^2$
 
 
 
+
+
+
 \begin{frame}{The Probability of a Failure Set}
 Then, for some fixed Borel set $S\subset \mathbb{R}_{+}^2$ with $\inf_{(x,y)\in Q} \max(x,y)>0$ and $v(\partial Q)=0$, we can write $(8.1.6)$ as 
 \begin{displaymath}
@@ -112,12 +156,13 @@ P\{ \big(    (1+\gamma_1 \dfrac{X-b_1(\frac{n}{k})}{a_1(\frac{n}{k})})^{1/\gamma
 \end{displaymath}
 This is approximately equal to
 \begin{displaymath}
-\frac{k}{n}v(c_nS)=\frac{k}{nc_n}v(S).z
+\frac{k}{n}v(c_nS)=\frac{k}{nc_n}v(S)
 \end{displaymath}
 And, this leads to the estimator
 \begin{displaymath}
 \hat{p}_n:=\frac{k}{nc_n}\hat{v}(\hat{S}).
 \end{displaymath}
+Note that $S$ is not known since $\gamma_1,\gamma_2,a_1,a_2,b_1,b_2$ are not known.              
 \end{frame}
 
 
@@ -146,15 +191,11 @@ independence and if S is contained in a set of the form $(x,\infty) \times (y,\i
 
 \section{Failure Set with Positive Exponent Measure}
 \begin{frame}{Assumption}
-In this section we assume that there exists some boundary point of $C_n, (w_n,v_n)$ such that
-\begin{displaymath}
-C_n \subset \{(x,y):x\ge v_n\, \text{or}\,y\ge w_n \}
-\end{displaymath}
-for all n. Define
+ Define
 \begin{displaymath}
 q_n:=(1+\gamma_1 \frac{v_n-b_1(\frac{n}{k})}{a_1(\frac{n}{k})})^{1/\gamma_1},\quad r_n:=(1+\gamma_2 \frac{w_n-b_2(\frac{n}{k})}{a_2(\frac{n}{k})})^{1/\gamma_2}.
 \end{displaymath}
-and assume that $\lim_{n\to \infty} q_n/r_n$ exists and is finite; this avoids the predominance of
+and assume that $0<\lim_{n\to \infty} q_n/r_n<\infty$  ; this avoids the predominance of
 one marginal over the other so that the problem does not become a univariate one in
 the limit.
 \end{frame}
@@ -169,7 +210,7 @@ Further Assumptions:
 \sqrt{k}(\hat{\gamma_i}-\gamma_i, \frac{\hat{a}_i(\frac{n}{k})}{a_i(\frac{n}{k})}-1, \dfrac{\hat{b}_i(\frac{n}{k})-b_i(\frac{n}{k})}{a_i(\frac{n}{k})})=(O_p(1),O_p(1),O_p(1)).
 \end{displaymath}
 \item $v(\partial S)=0$ and $v(S)>0$, and $c_n$ a sequence of positive numbers with $c_n\to \infty$.
-\item Suppose $0<\frac{q_n}{r_n}<\infty$ (this condition imply that $q_n/r_n$ does not depend on $n$),
+\item Suppose $0<q_n/r_n<\infty$ (this condition imply that $q_n/r_n$ does not depend on $n$),
 \begin{equation}\tag{8.2.5}
 \lim_{t\to \infty} \frac{w_{\gamma_1 \land \gamma_2}(c_n)}{\sqrt{h}}=0,
 \end{equation}
@@ -281,7 +322,7 @@ reasoning developed in the previous section. Using again (8.1.8),
 \begin{displaymath}
 \begin{split}
 p_n&=P((X,Y)\in C_n)\\
- &=P\big \{ \big(    (1+\gamma_1 \dfrac{X-b_1(\frac{n}{k})}{a_1(\frac{n}{k})})^{1/\gamma_1}, (1+\gamma_2 \dfrac{Y-b_2(\frac{n}{k})}{a_2(\frac{n}{k})})^{1/\gamma_2}            \big)\in c_n S\bigcap\}.
+ &=P\big \{ \big(    (1+\gamma_1 \dfrac{X-b_1(\frac{n}{k})}{a_1(\frac{n}{k})})^{1/\gamma_1}, (1+\gamma_2 \dfrac{Y-b_2(\frac{n}{k})}{a_2(\frac{n}{k})})^{1/\gamma_2}            \big)\in c_n S\}.
 \end{split}
 \end{displaymath}
 which is approximately equal to
