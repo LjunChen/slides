@@ -4,6 +4,29 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
+
+
+
+\newcommand{\E}{\operatorname{E}}
+\newcommand{\Cov}{\operatorname{Cov}}
+\newcommand{\argmin}{\mathop{\mathrm{argmin}}}
+\newcommand{\Var}{\operatorname{Var}}
+\renewcommand{\P}{\operatorname{P}}
+\renewcommand{\mathbf}{\boldsymbol}
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\suit}[1]{\left(#1\right)}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\td}{\stackrel{d}{\to}}
+\newcommand{\tp}{\stackrel{P}{\to}}
+\newcommand{\toprule}{\hline\hline}
+\newcommand{\bottomrule}{\hline\hline}
+\newcommand{\midrule}{\hline}
+
 \author{Luarens de Haan and Ana Ferriera}
 \title{Estimation of the Dependence Structure}
 %\setbeamercovered{transparent} 
@@ -270,6 +293,42 @@ L(x,y)=x\Phi(\frac{\pi}{2}) +(x\lor y)\int_{\pi/4}^{arctan(y/x)} \Phi(\theta)(\f
 \end{displaymath}
 This leads to an alternative estimator of the function $L$ with $\Phi$ repalced by $\hat{\Phi}$.
 \end{frame}
+
+\begin{frame}
+	\frametitle{Proof of the above page}
+First, we split the integrate into two parts: the first is from $0$ to $\pi/4$, and the second is from $\pi/4$ to $\pi/2$. Without loss of generality, we assume that $x\le y$, Then we have that 
+$L(x,y) = \int_0^{\pi/4}\set{x \tan \theta \lor y } \Phi(d\theta)+\int_{\pi/4}^{\pi/2} \set{x \lor y \cot \theta} \Phi(d\theta).$
+
+Since $x\le y$, then $\arctan y/x >\pi/4$. Then, we obtain that 
+$$
+\begin{aligned}
+	L(x,y)&=\int_{0}^{\pi/4} y \Phi(d\theta)+\int_{\pi/4}^{\arctan y/x}y\cot\theta\Phi(d\theta)+ \int_{\arctan y/x}^{\pi/2} x \Phi(d\theta) \\
+	&:=I_1+I_2+I_3.
+\end{aligned}
+$$
+It is obvious that $I_1=y\Phi(\pi/4), I_3=x\Phi(\pi/2)-x\Phi(\arctan y/x)$. For $I_2$, we have that 
+$$
+I_2=y\cot \theta \Phi(\theta)\vert_{\pi/4}^{\arctan y/x}+ y\int_{\pi/4}^{\arctan y/x}  \frac{1}{\sin^2 \theta} \Phi(\theta) d\theta
+$$
+\end{frame}
+
+\begin{frame}
+	\frametitle{Proof: Continue}
+It follows that 
+$
+I_2= x \Phi(\arctan\theta)-y\Phi(\pi/4).
+$
+Then, we obtain that 
+$$
+L(x,y)=x\Phi(\pi/2)+ y\int_{\pi/4}^{\arctan y/x}  \frac{1}{\sin^2 \theta} \Phi(\theta) d\theta.
+$$
+The statement holds for $x\le y$.
+Recall that $$\int_0^{\pi/2} (1\land \tan\theta)\Phi(d\theta)=\int_0^{\pi/2}(1\land \cot\theta)\Phi(d\theta)=1.$$
+Then the statement also holds for $x\ge y$.
+
+\end{frame}
+
+
 \begin{frame}{Estimation of $L$ and $G$}
 \begin{itemize}
 \item This estimator is somewhat more complicated than the one in Section 7.2. On the other hand,  the present estimator has the advantage that it is homogeneous,
@@ -277,7 +336,7 @@ This leads to an alternative estimator of the function $L$ with $\Phi$ repalced 
 \hat{L}_{\Phi}(ax,ay)=a\hat{L}_{\Phi}(x,y),
 \end{displaymath}
 for $a,x,y>0$.
-\item Therefore the functon
+\item Therefore the function
 \begin{displaymath}
 \hat{G}_0(x,y):=\exp\big(-\hat{L}_{\Phi}(1/x,1/y)\big)
 \end{displaymath}
@@ -363,7 +422,7 @@ H:=\frac{\kappa-1}{d-1}=\frac{d-L}{(d-1)L},
 \end{frame}
 \begin{frame}{A Dependent Coefficient}
 \begin{itemize}
-\item Howerver, the extension of $\lambda $ to higher dimensions does not share this property.
+\item However, the extension of $\lambda $ to higher dimensions does not share this property.
 \item One example is the random vector $(Y_1,Y_1,Y_2)$ with $Y_1,Y_2$ $i.i.d.$ with common distribution $\exp(-1/x)$.
 \item The exponent measure is concentrated on the intersection of these sets, that is $\{(x_1,x_2,x_3)\in\mathbb{R}^3: x_1=x_2,x_3=0\}$ and $\{ \{(x_1,x_2,x_3)\in\mathbb{R}^3:x_1=x_2=0\}$. There is no asymptotical independence.
 \item But 
