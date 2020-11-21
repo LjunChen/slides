@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.12)  18 NOV 2020 19:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.10.12)  21 NOV 2020 22:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -688,7 +688,7 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 
 ] [11
 
-] (./trends.toc) [12
+] [12
 
 ] [13
 
@@ -700,87 +700,85 @@ File: ot1mathkerncmss.fd 2020/01/31 Fontinst v1.933 font definitions for OT1/mat
 
 ] [17
 
-] [18
+] (./trends.toc) [18
 
-] (./trends.toc) [19
+] [19
 
 ] [20
 
-] [21
-
 ]
-<QQ.png, id=660, 1632.0975pt x 1447.4075pt>
+<QQ.png, id=621, 1632.0975pt x 1447.4075pt>
 File: QQ.png Graphic file (type png)
 <use QQ.png>
-Package pdftex.def Info: QQ.png  used on input line 322.
+Package pdftex.def Info: QQ.png  used on input line 321.
 (pdftex.def)             Requested size: 239.60567pt x 212.48586pt.
 
-Overfull \vbox (2.48187pt too high) detected at line 322
+Overfull \vbox (2.48187pt too high) detected at line 321
  []
 
-[22
+[21
 
  <./QQ.png>]
-<image-20200429225741056.png, id=691, 1573.88pt x 613.29124pt>
+<image-20200429225741056.png, id=651, 1573.88pt x 613.29124pt>
 File: image-20200429225741056.png Graphic file (type png)
 <use image-20200429225741056.png>
-Package pdftex.def Info: image-20200429225741056.png  used on input line 331.
+Package pdftex.def Info: image-20200429225741056.png  used on input line 330.
 (pdftex.def)             Requested size: 342.2953pt x 133.3804pt.
- [23
+ [22
 
  <./image-20200429225741056.png>]
-<image-20200429225848297.png, id=719, 251.7405pt x 272.51813pt>
+<image-20200429225848297.png, id=680, 251.7405pt x 272.51813pt>
 File: image-20200429225848297.png Graphic file (type png)
 <use image-20200429225848297.png>
-Package pdftex.def Info: image-20200429225848297.png  used on input line 340.
+Package pdftex.def Info: image-20200429225848297.png  used on input line 339.
 (pdftex.def)             Requested size: 198.53189pt x 214.92102pt.
 
-Overfull \vbox (4.91704pt too high) detected at line 340
+Overfull \vbox (4.91704pt too high) detected at line 339
  []
 
-[24
+[23
 
- <./image-20200429225848297.png>] (./trends.toc) [25
+ <./image-20200429225848297.png>] (./trends.toc) [24
 
-] [26
+] [25
 
 ]
-<image-20200429230720801.png, id=808, 158.994pt x 170.13562pt>
+<image-20200429230720801.png, id=767, 158.994pt x 170.13562pt>
 File: image-20200429230720801.png Graphic file (type png)
 <use image-20200429230720801.png>
-Package pdftex.def Info: image-20200429230720801.png  used on input line 364.
+Package pdftex.def Info: image-20200429230720801.png  used on input line 363.
 (pdftex.def)             Requested size: 201.95297pt x 216.11655pt.
 
-Overfull \vbox (6.11256pt too high) detected at line 364
+Overfull \vbox (6.11256pt too high) detected at line 363
  []
 
-[27
+[26
 
- <./image-20200429230720801.png>] [28
+ <./image-20200429230720801.png>] [27
 
 ]
-<image-20200429230846070.png, id=864, 186.6975pt x 188.50426pt>
+<image-20200429230846070.png, id=824, 186.6975pt x 188.50426pt>
 File: image-20200429230846070.png Graphic file (type png)
 <use image-20200429230846070.png>
-Package pdftex.def Info: image-20200429230846070.png  used on input line 384.
+Package pdftex.def Info: image-20200429230846070.png  used on input line 383.
 (pdftex.def)             Requested size: 205.37926pt x 207.37544pt.
- [29
+ [28
 
- <./image-20200429230846070.png>] [30
+ <./image-20200429230846070.png>] [29
 
 ]
-<Figure6.png, id=921, 1294.8375pt x 1280.785pt>
+<Figure6.png, id=880, 1294.8375pt x 1280.785pt>
 File: Figure6.png Graphic file (type png)
 <use Figure6.png>
-Package pdftex.def Info: Figure6.png  used on input line 406.
+Package pdftex.def Info: Figure6.png  used on input line 405.
 (pdftex.def)             Requested size: 222.48985pt x 220.07574pt.
 
-Overfull \vbox (10.07176pt too high) detected at line 406
+Overfull \vbox (10.07176pt too high) detected at line 405
  []
 
-[31
+[30
 
- <./Figure6.png>] [32
+ <./Figure6.png>] [31
 
 ]
 \tf@nav=\write6
@@ -792,27 +790,27 @@ Overfull \vbox (10.07176pt too high) detected at line 406
 \tf@snm=\write8
 \openout8 = `trends.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 416.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 416.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 415.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 415.
  (./trends.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 416.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 416.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 415.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 415.
 Package rerunfilecheck Info: File `trends.out' has not changed.
-(rerunfilecheck)             Checksum: AFCB94992856F3BA160B8A46A40B5683;239.
+(rerunfilecheck)             Checksum: E67AAAECDCFE402C52C0CDAC313B6B8A;190.
  ) 
 Here is how much of TeX's memory you used:
- 18244 strings out of 480608
- 351444 string characters out of 5903614
+ 18233 strings out of 480608
+ 351341 string characters out of 5903614
  595770 words of memory out of 5000000
- 33610 multiletter control sequences out of 15000+600000
+ 33604 multiletter control sequences out of 15000+600000
  543854 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,15n,67p,823b,635s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on trends.pdf (32 pages, 732342 bytes).
+Output written on trends.pdf (31 pages, 729669 bytes).
 PDF statistics:
- 1038 PDF objects out of 1200 (max. 8388607)
- 955 compressed objects within 10 object streams
- 70 named destinations out of 1000 (max. 500000)
- 155 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 998 PDF objects out of 1000 (max. 8388607)
+ 916 compressed objects within 10 object streams
+ 67 named destinations out of 1000 (max. 500000)
+ 147 words of extra memory for PDF output out of 10000 (max. 10000000)
 
