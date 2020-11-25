@@ -182,13 +182,44 @@ $$
 \end{frame}
 
 \begin{frame}
-    \frametitle{Main difficulties of the proofs}
+    \frametitle{Sketch of the Proof}
+Notations:
+    \begin{itemize}
+        \item $\bar{U}_{s,n}=\max_{\set{i:\abs{i/n-s}\le h}} U_{i/n}$, $\underline{U}_{s,n}=\min_{\set{i:\abs{i/n-s}\le h}} U_{i/n}$
+    \end{itemize}
 
-    
+Write  $X_i = U_{i/n}(Z_i)$, where $\set{Z_i}_{i=1}^n$ are iid standard Pareto distributed random variables. Also rank $\set{Z_i: i\in I_n(s)}$ into order statistics. 
 
+{\color{blue} Since $U_{i/n}$ are different, the order statistics $X_{j,[znh]}^{(s)}$ may not corrspond to the order statistics $Z_{j,[2nh]}^{(s)}$.}
+{\color{red}
+Nevertheless, 
+$$
+\underline{U}_{s,n}(Z_{j,[2nh]}^{(s)}) \le X_{j,[znh]}^{(s)} \le \bar{U}_{s,n}(Z_{j,[2nh]}^{(s)}).
+$$
+}
+Then,
+$$
+\hat{\gamma}_H(s)\le \frac{1}{[2kh]}\sum_{j=1}^{2kh} \suit{\log \frac{\bar{U}_{s,n}(Z_{[2nh]-j+1,[2nh]}^{(s)})}{U_s(n/k)} -\log \frac{\underline{U}_{s,n}(Z_{[2nh]-j+1,[2nh]}^{(s)})}{U_s(n/k)}}
+$$
 \end{frame}
 
+\begin{frame}
+    \frametitle{Sketch of the Proof}
+Some Lemmas(Corollary A.1):
+$$
+\sqrt{k}\sup_{0\le s\le 1, 1/2\le x \le q_n} \abs{\frac{\bar{U}_{s,n}(\frac{n}{k}x)}{U_s(\frac{n}{k})x^{\gamma(s)}}-1} \to 0,
+$$
+$$
+\sqrt{k}\sup_{0\le s\le 1, 1/2\le x \le q_n} \abs{\frac{\underline{U}_{s,n}(\frac{n}{k}x)}{U_s(\frac{n}{k})x^{\gamma(s)}}-1} \to 0,
+$$
+Apply Corollary A.1 to bound $\hat{\gamma}_H(s)$. 
+{\color{blue} Need to verify that
+$$
+Pr\suit{\frac{k}{n} Z_{[2nh]-j+1,[2nh]}^{(s)} \in [1/2,q_n], \ for \ all \ j=1,2,\dots,[2kh]} \to 1.
+$$}
 
+The rest of proofs are similar to that of the standard Hill estimator.
+\end{frame}
 
 
 \begin{frame}
@@ -240,6 +271,43 @@ $$
 
 \begin{frame}
     \frametitle{Sketch of the proofs}
+Apply the same discretized to the function $\gamma$ as follows:
+$$
+\tilde{\gamma} =\left\{ \begin{array}[]{cc}
+    \gamma\suit{(2[\frac{s}{2h}]+1)h}, & \ for \ s\in [0,2h[1/(2h)]]\\
+    \gamma\suit{(2[\frac{s}{2h}]-1)h}, & \ for \ s\in [2h[1/(2h)],1].
+\end{array}\right.
+$$
+\bigskip
+
+Main Steps:
+\begin{itemize}
+    \item Prove that there exists a series of Brownian motions such that 
+    $$
+\sup_{s\in [0,1]} \abs{\sqrt{k}(\hat{\Gamma}(s)-\tilde{\Gamma}(s))-\int_{0}^s \tilde{\gamma}(u)dW_n(u)}\stackrel{P}{\to} 0.
+    $$
+    \item Handle the uniform negligible difference between $\tilde{\gamma}(\cdot)$ and $\gamma$.
+\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Sketch of the Proofs}
+Since the estimator $\hat{\Gamma}(s)$ involves the local estimators $\hat{\gamma}_H(s)$ at $s=(2p-1)h$ for $p=1,2,3\dots,1/[(2h)]$.
+
+Similar to that in Theorem 2.1, need to verify that 
+{\color{blue}
+$$
+Pr\suit{\frac{k}{n} Z_{[2nh]-j+1,[2nh]}^{((2p-1)h)} \in [\frac{1}{2},q_n], \forall 1\le j \le [2kh]+1,1\le p\le [\frac{1}{2h}]} \to 1.
+$$}
+Then we obtian some uniform expansion:
+$$
+\sqrt{k} \sup_{1\le p \le [1/(2h)]} \abs{\hat{\gamma}_H((2p-1)h)-\gamma((2p-1)h)J_n^{(p)}}=o_P(1),
+$$
+where $J_n^{(p)}=\frac{1}{[2kh]}\log \frac{Z_{[2nh]-j+1,[2nh]}^{((2p-1)h)}}{Z_{[2nh]-[2kh]+1,[2nh]}^{((2p-1)h)}}.$
+
+The rest of the proof follows by the theory of tail empirical process.(Still difficult.)
 
     
 
@@ -301,10 +369,17 @@ Run a simulation study to demonstrate the finite sample performance of the testi
     \frametitle{Simulation Setting}
     For the function $\gamma(s)$ we consider 
     \begin{itemize}
-        \item  either a linear trend as $\gamma(s)=1+bs$
+        \item  a linear trend as $\gamma(s)=1+bs$
+        \medskip
         \item  or a trend following the sin function as $\gamma(s)=1+c\sin(2\pi s)$.
+    \end{itemize}
+
+    \bigskip
+
+    \begin{itemize}
         \item 
         If $b=0$ or $c=0$, the two model resemble the iid case.
+        \medskip
         \item     
         Consider four alternative cases $b=1, b=2, c=1/4$ and $c=1/2$.
     \end{itemize}
@@ -321,7 +396,7 @@ Run a simulation study to demonstrate the finite sample performance of the testi
 
 \begin{frame}
     \frametitle{Rejection Rate}
-
+Rejection Rate : = \#$\set{j: p_j<\alpha}/m$
     \begin{center}
         \includegraphics[width=1\textwidth]{image-20200429225741056}
     \end{center}
@@ -336,6 +411,17 @@ Run a simulation study to demonstrate the finite sample performance of the testi
     
 
 \end{frame}
+
+
+\begin{frame}
+    \frametitle{QQ plots for the estimates of $\gamma(1/2)$.}
+    \begin{center}
+        \includegraphics[width=1\textwidth]{figure3.png}
+    \end{center}
+
+    
+
+\end{frame}
 \section{Application}
 
 \begin{frame}
@@ -346,9 +432,7 @@ Run a simulation study to demonstrate the finite sample performance of the testi
     \medskip
     \item Test the constancy of the extreme value indices over the entire period.
     \medskip
-    \item Do not reject the null hypothesis under the 5% significance level (the dash line).
-    \medskip
-    \item Estimate the constant extreme value index by applying the Hill estimator to all observations, that is, estimating $\Gamma(1)$.
+    \item Conclusion: do not reject the null hypothesis under the 5\% significance level (the dash line).
 \end{itemize}
 \end{frame}
 
@@ -366,9 +450,14 @@ Run a simulation study to demonstrate the finite sample performance of the testi
     \frametitle{Application 2: loss Return of S\&P 500}
 
    \begin{itemize}
-       \item  S\&P 500 index 1988-2012(n=6302) \& 1963-2012(n=12586).
+       \item  Datasets: S\&P 500 index daily returns: $X_t=\log (P_t/P_{t+1})$
        \bigskip
-       \item Daily loss returns are defined as $X_t=\log (P_t/P_{t+1})$
+       \item Goal: test whether the extreme value indices holds constant over the a period.
+       \bigskip
+       \item Period 1:  1988-2012 $(n=6302)$
+       \item  Period 2: 1963-2012 $(n=12586)$
+       \bigskip
+ 
    \end{itemize} 
 \end{frame}
 
@@ -388,7 +477,7 @@ Run a simulation study to demonstrate the finite sample performance of the testi
     \bigskip
     \item By using the test based on assuming no serial dependence, we tent to over reject the null.
     \bigskip
-    \item Given that the analysis using the data from 1988to 2012 did not reject the null, accounting for serial dependence may not alter the conclusion. However, the rejection resultbased on the data from 1963 to 2012 may suffer from the serialdependence issue. 
+    \item Given that the analysis using the data from 1988 to 2012 did not reject the null, accounting for serial dependence may not alter the conclusion. However, the rejection result based on the data from 1963 to 2012 may suffer from the serial dependence issue. 
 \end{itemize}
     
 

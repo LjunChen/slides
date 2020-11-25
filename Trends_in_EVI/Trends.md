@@ -68,6 +68,42 @@ This is the simulation setting. This paper generate $m=2000$ samples with $n=500
 $X_i=Z_i^{1/\gamma(i/n)}$, where $Z_i$ are iid observations from the standard Frechet distribution.
 
 
-For the function $\gamma(s)$, we consider
+For the function $\gamma(s)$, we consider either a linear trend as $\gamma(s)=1+bs$ or a trend as $1+c \sin(2\pi s)$. If $b=0$ or $c=0$, the two model resemble the iid case, that is, the null hypothesis that extreme value indices remain constant holds. We consider four alternative cases: $b=1, b=2, c=1/4$ and $c=1/2$. In total, we have 20 sets of simulations due to various choices of $k,h$ and the model of $\gamma(s)$.
+For each simulated sample, we apply the test statistic $\tilde{T}$ to test whether the extreme value indicies remain constant and obtain the corresponding $p$-value.
+
+
+For the simulations based  $b=0$(or c=0), that is, when the null hypothesis holds. We know that under unull hypothesis, the P-value follows a uniform distribution. And then we can make a QQ plot bettwen the simulated p-values aganist a uniform distribution. We see that the dots in QQ plots line up on the 45 degree in line. The plot confirm the validity of the test under null hypothesis.
+
+Next, for all sets of simulations, calculate the rejection rate based on each significance level $\alpha$ as the percentage of the sample whose $p$ value is less than $\alpha$. $\alpha$ is chosen to be 0.01, 0.05 and 0.1. The rejection rates are reported in Table 1.
+
+In the first panel, we observe that under the null hypothesis, the rejection rates, that is the type1 error, are close to the significance level. The difference  between the two choice of $k$ is very samll when $h=0.025$. For $k=100$ and $h=0.04$, the test is conservative.
+
+In the next two panels, the linear and sin trend panel, the rejections rate can be read as the power of the test. Between the two choice of $h$, $h=0.025$ leads to a slightly higher power for rejecting the linear trend while $h=0.04$ leads to sightly higher power for the sin trend. Between the two choices of $k$, $k=200$ leads to a much higher power in all the models. Therefore, choosing  a higher $k$ is preferred as long as the bias not an issue, whereas the choice of $h$ depends on the shape of trend.
+
+When comparing across models, the power is higher for $b=2$ than for $b=1$. And higher for $c=1/2$ than for $c=1/4$. This is in line with our intuition, The test is more powerfull to detect large deviation from the null hypothesis.
+
+For the two sin trends. The authors plot the  estimated $\gamma(s)$ and the 95\% confidence interval for any given $s$. There are two ways to construct the confidence interval.  The first is based on Theorem 2.1, that is Theoretical Confidence interval. Second, we can use the empirical confidence interval based on m samples. And this time , $k=200$ and $h=0.025$.
+
+From this figure, the average of estimates of trend are very close to the true value. And the empirical confidence interval is also close to the theoretical one. However, the empirical confidence interval is shifted slighted upware compared to the theoretical one.  One explation is the estimation bias. However, since the average estimates is close to the true value. So, this explanation is not reasonable. The authors give another explanation. Note that the asymptotic normality requires that large value of $2kh$. However, $2kh=10$ in this exmaple, which is relatively low. And the QQ plot suggests that this explanation may be reasonable.
+
+
+
+ Now, we turn to the Application part. The authors conduct two applications to test whether the extreme value indices remain constant over time. 
+ The first application is about the preciptation from 1976 to 2015, with 14610 daily observation.
+ THe obtain p-value against various levels of $k$ are ploted is this figure. We see that the p-value is always great than 0.05. So  the conclusion is that do not reject the null hypothesis under the 5% significance level.
+  By choosing $k=200$, the author obtain that the estimate of the constant value index is 0.395.
+
+
+The second application is the daily loss return of the Standard and Poor 500 index. The goal is same as before. They want to test whether the extreme value indices remain constant over the whole period.
+They consider two periods. The first period  is from 1988 to 2012, which consists of n=6302 observations. Another period is longer, from 1963 to 2012, which consists of n=12586 observations. 
+
+The obtained p-alues againist varios level of $k$ are shown in this figure. The upper one is for period 1. The lower one is for period 2. For the period 1, from 1988 to 2012, the null hypothesis is not rejected for k up to 750 under the 0.05 significan level. And we can think the extreme value indices remain constant over this period And we reject the constant extreme value index hypotheis for period 2. And we conclude that there is a change of extreme value index during the period from 1963 to 2012.
+
+One concern in the aforementioned analysis is that financial data such stock return exhibits serial dependence. The presence of serial dependence would in general enlarge the asymtotic variance of the local estimators for $\gamma(s)$. Corresponding, the critical value of the proposed test should be higher. By using the test based on assuming no serial depenndence, we tend to over reject the null. Given that the analysis using data in period 1, from 1988 to 2012, did not reject null, accounting for serial dependence may not change the conclusion. However, the reject result basesd on from from period 2 may suffer from serial dependence issue.
+
+The authors split the dataset into two subsets that consist of daily returns on the even and odds days, respectively. The split of the full data helps to reduce the serial dependece and data from each subset is more close to the iid assumption.
+
+
+With accounting for serial dependence, there is no conclusive evidence that the extreme value index varies over this period.
 
 
