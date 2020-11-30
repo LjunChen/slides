@@ -1,0 +1,100 @@
+%!TEX program =pdflatex
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+%%define new comand
+\def\argmin{\mathop{\rm arg~min}\limits}
+\def\argmin{\mathop{\rm arg~min}\limits}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+\newcommand{\brho}{\displaystyle{\large{\boldsymbol{\rho}}}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bfeta}{\boldsymbol{\eta}}
+\newcommand{\bPsi}{\boldsymbol{\Psi}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bvartheta}{\boldsymbol{\vartheta}}
+\newcommand{\bzero}{\mathbf{0}}
+\newcommand{\bone}{\mathbf{1}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\suit}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\msuit}[1]{\left[ #1 \right]}
+\author{Simpson, Wadsworth and Tawn (2020)}
+\title{Determining the dependence structure of multivariate extremes}
+\begin{document}
+\begin{frame}
+\titlepage
+\begin{center}
+    Published on Biometrika(2020). 
+    \bigskip
+
+    Presented by Liujun Chen.
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Introduction}
+\begin{itemize}
+    \item When modelling in multivariate extreme value analysis, one often needs to exploit extremal dependence features.
+    \item Consider the random vector $X=(X_1,\dots,X_d)$, with $X_i\sim F_i$.
+    \item Consider a subset of these variables $X_C=\set{X_i:i\in C}$, $C$ lies in the power set of $D=\set{1,\dots,d}$.
+    \item For any $C$ with $\abs{C}\ge 2$, extremal dependence with $X_C$ can be summarized by 
+    $$
+\chi_C=\lim_{u\to 1} pr \set{F_i(X_i)>u : i\in C}/(1-u)
+    $$
+    if the limit exists.
+\end{itemize}
+    
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Introduction}
+    \begin{itemize}
+        \item If $\chi_C>0$, the variables in $X_C$ are asymptotically dependent (they can take their largest values simultaneously).
+        \bigskip
+        \item  If $\chi_C=0$, the variables in $X_C$ cannot all take their largest values simultaneously.
+        \bigskip
+        \item However, it is possible that for some $\underline{C} \subset C, \chi_{\underline{C}}>0$. 
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Introduction}
+    Many models for multivariate extremes are applicable only when
+    \begin{itemize}
+        \item  data exhibit either full asymptotical dependence, entailing $\chi_C>0$ for all $C\in z^D \backslash \emptyset$ with $\abs{C}\ge 2$.
+        \item or full asymptotical independence $\chi_{i,j}=0$ for all $i<j$.
+    \end{itemize}
+\bigskip
+
+However, it is often the case that some $\chi_C$ are positive while others are zero. 
+
+\bigskip
+
+The extremal dependence between variables can thus have a complicated structure.
+
+    
+
+\end{frame}
+\end{document}
