@@ -1,13 +1,13 @@
 The paper I am going to prensent is "Trends in Extreme Value Indices". This paper is published on Journal of the American Statistical Association in 2020. It is written by Laurens de Haan and Chen Zhou.
 
 
-This is the outline of My presentation. First, I will give a introduction to this study. And then I will present the main methodology. And Finally, a simualtion study and a real data application will be presented.
+This is the outline of My presentation. First, I will give a introduction to this study. And then I will present the main methodology. And Finally, a simulation study and a real data application will be presented.
 
 Now, we turn to the first part.
 
 Classic extreme value analysis assumes that the observations are independent and identically distributed. 
 Recent studies aim at dealing with case when observations are drawn from different distribution. 
-This paper considers a continously changing extreme value index and try to estimate the functional extreme value index accurately.
+This paper considers a continuously changing extreme value index and try to estimate the functional extreme value index accurately.
 
 
 Mathematically, consider a set of distributions $F_s(x)$ for $s\in [0,1]$. Now  we have independent random variables $X_1$ to $X_n$ and the distribution function of $X_i$ is $F_{i/n}$.
@@ -103,7 +103,12 @@ One concern in the aforementioned analysis is that financial data such stock ret
 
 The authors split the dataset into two subsets that consist of daily returns on the even and odds days, respectively. The split of the full data helps to reduce the serial dependece and data from each subset is more close to the iid assumption.
 
-
 With accounting for serial dependence, there is no conclusive evidence that the extreme value index varies over this period.
+
+
+
+
+
+
 
 
