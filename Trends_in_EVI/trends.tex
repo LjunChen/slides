@@ -37,7 +37,7 @@
 \newcommand{\msuit}[1]{\left[ #1 \right]}
 \author{Laurens de Haan and Chen Zhou }
 \date{Dec, 07, 2020}
-\title{Trends in Extreme Value Index}
+\title{Trends in Extreme Value Indices}
 \begin{document}
 \begin{frame}
 \titlepage
@@ -67,7 +67,7 @@
 \begin{itemize}
     \item Classic extreme value analysis assumes that the observations are i.i.d.
     \bigskip
-    \item Recent studies aim at dealing with the case when observations are drawn from different distributions.
+    \item This study aims at dealing with the case when observations are drawn from different distributions.
     \bigskip
     \item This paper considers a continuously changing extreme value index and try to estimate the functional extreme value index accurately.
 \end{itemize}
@@ -100,7 +100,7 @@
     $$
 i\in I_n(s)=\set{\abs{\frac{i}{n}-s}\le h},
     $$
-    where $h:=h(n)$ is the bandwidth such that as $n\to \infty$, $h \to \infty$ and $nh\to \infty$.
+    where $h:=h(n)$ is the bandwidth such that as $n\to \infty$, $h \to 0$ and $nh\to \infty$.
     \medskip
 \item Correspondingly, there will be $[2nh]$ observations for $s\in [h,1-h]$.
 \end{itemize}
@@ -136,9 +136,22 @@ First, the second order condition is assumed. Suppose there exists a continuous 
 \end{equation}
 
 
-holds for $x>1/2$ and uniformly for all $s\in [0,1]$. 
+holds for $x>1/2$ and uniformly for all $s\in [0,1]$. Here $U_s = (1/(1-F_s))^{\leftarrow}$.
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Main Conditions}
+The approach can be regarded as a combination of kernel density estimation and extreme value statistics.
+\bigskip
+\begin{itemize}
+    \item The observations used are from a h-neighborhood that is shrinking.
+    \bigskip
+    \item Second, within each $h$-neighborhood, we need to apply a threshold to all observations that is increasing toward infinity. 
+\end{itemize}
+    
+
+\end{frame}
 
 \begin{frame}
     \frametitle{Conditions for $k$ and $h$}
@@ -169,6 +182,8 @@ Choose the intermediate sequence $k$ and the bandwidth $h$ as follows:
     
 
 \end{frame}
+
+
 
 \begin{frame}
     \frametitle{Theorem 2.1: Asymptotical normality of the local estimator}
@@ -205,7 +220,7 @@ $$
 
 \begin{frame}
     \frametitle{Sketch of the Proof}
-Some Lemmas(Corollary A.1):
+Some Lemmas(Corollary A.1): (Def: $q_n=k^{1+\varepsilon}$ for some $\varepsilon>0$.)
 $$
 \sqrt{k}\sup_{0\le s\le 1, 1/2\le x \le q_n} \abs{\frac{\bar{U}_{s,n}(\frac{n}{k}x)}{U_s(\frac{n}{k})x^{\gamma(s)}}-1} \to 0,
 $$
@@ -229,7 +244,7 @@ Next, consider testing the hypothesis that $\gamma(s)=\gamma_0(s)$ for all $s\in
 \bigskip
 
 \begin{itemize}
-    \item Although we are able to estimate the function $\gamma$ locally, since the local estimators use only local observations, their asymptotic limits are obviously independent. {\color{red} What does this mean?}
+    \item Although we are able to estimate the function $\gamma$ locally, we cannot construct a hypothesis testing directly.
     \item In addition, the local estimator converges with a slow speed of convergence $1/\sqrt{2kh}$.
     \item  To achieve the stated goal, we consider the estimation $\Gamma(s)=\int_{0}^{s}\gamma(u)du$ and test the equivalent hypothesis that $\Gamma=\Gamma_0$.
 \end{itemize}
@@ -271,7 +286,7 @@ $$
 
 \begin{frame}
     \frametitle{Sketch of the proofs}
-Apply the same discretized to the function $\gamma$ as follows:
+Apply the same discretization to the function $\gamma$ as follows:
 $$
 \tilde{\gamma} =\left\{ \begin{array}[]{cc}
     \gamma\suit{(2[\frac{s}{2h}]+1)h}, & \ for \ s\in [0,2h[1/(2h)]]\\
@@ -284,7 +299,7 @@ Main Steps:
 \begin{itemize}
     \item Prove that there exists a series of Brownian motions such that 
     $$
-\sup_{s\in [0,1]} \abs{\sqrt{k}(\hat{\Gamma}(s)-\tilde{\Gamma}(s))-\int_{0}^s \tilde{\gamma}(u)dW_n(u)}\stackrel{P}{\to} 0.
+\sup_{s\in [0,1]} \abs{\sqrt{k}(\hat{\Gamma}_H(s)-\tilde{\Gamma}(s))-\int_{0}^s \tilde{\gamma}(u)dW_n(u)}\stackrel{P}{\to} 0.
     $$
     \item Handle the uniform negligible difference between $\tilde{\gamma}(\cdot)$ and $\gamma$.
 \end{itemize}
@@ -294,7 +309,7 @@ Main Steps:
 
 \begin{frame}
     \frametitle{Sketch of the Proofs}
-Since the estimator $\hat{\Gamma}(s)$ involves the local estimators $\hat{\gamma}_H(s)$ at $s=(2p-1)h$ for $p=1,2,3\dots,1/[(2h)]$.
+Since the estimator $\hat{\Gamma}_H(s)$ involves the local estimators $\hat{\gamma}_H(s)$ at $s=(2p-1)h$ for $p=1,2,3\dots,1/[(2h)]$.
 
 Similar to that in Theorem 2.1, need to verify that 
 {\color{blue}
@@ -307,7 +322,7 @@ $$
 $$
 where $J_n^{(p)}=\frac{1}{[2kh]}\log \frac{Z_{[2nh]-j+1,[2nh]}^{((2p-1)h)}}{Z_{[2nh]-[2kh]+1,[2nh]}^{((2p-1)h)}}.$
 
-The rest of the proof follows by the theory of tail empirical process.(Still difficult.)
+The rest of the proof follows by the theory of  empirical process.(Still difficult.)
 
     
 
