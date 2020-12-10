@@ -180,6 +180,21 @@ where $\set{Y_t}$ is a sequence of i.i.d. unit Fr\'echet random variables, $0\le
 
 
 \begin{frame}
+    \frametitle{Remark 1}
+    \begin{itemize}
+        \item AcF can be easily extended to include $q_1$ autoregressive terms of $\log \sigma_t$ and $\log \alpha_t$, and $q_2$ lagged terms of $\eta(Q_t)$, similar to that of GARCH($q_1,q_2$) model.
+        \bigskip
+        \item Similar theoretical properties can be derived and similar estimation procedures can be used.
+        \bigskip
+        \item Our empirical experience shows that the extension does not necessarily improve the performance of the model.
+    \end{itemize}
+
+    
+
+\end{frame}
+
+
+\begin{frame}
     \frametitle{Stationarity and ergodicity}
 The model can be written as 
 $$
@@ -198,6 +213,45 @@ $$
 
 
 
+\begin{frame}
+    \frametitle{AcF under a factor model setting}
+    We illustrate that the limiting form of maxima $Q_t$ under a general factor model framework leads to an AcF model.
+\begin{itemize}
+    \item Assume $\set{X_{it}}_{i=1}^p$ follow a general factor model,
+    $$
+    X_{it} = f_i(Z_{1t},\dots,Z_{dt})+\sigma_{it}\varepsilon_{it},
+    $$ 
+    
+    \item  $\set{X_{it}}_{i=1}^p$ are observed time series at time $t$, $\set{Z_{1n},\dots,Z_{dn}}$ consist of observed and unobserved factors, $\set{\varepsilon_{it}}_{i=1}^p$ are i.i.d. random noises that are independent with the factors $\set{Z_{id}}_{i=1}^d$.
+    \item Assume that $\set{\varepsilon_{it}}_{i=1}^p$ are in the domain of attraction of the Fr\'echet distribution. 
+\end{itemize}
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Other Assumptions for the factor model}
+\begin{itemize}
+    \item $\sup_{1\le p<\infty}\sup_{1\le i\le p}f_i(Z_{1t},\dots,Z_{dt})<\infty \ \text{a.s.}$
+    \bigskip
+    \item $\lim_{p\to \infty} \sum_{i=1}^p \sigma_{it}^{\alpha_t}=\infty$
+    \bigskip
+    \item $\lim_{p\to \infty} \sup_{1\le i\le p}\frac{\sigma_{it}^{\alpha_t}}{\sum_{j=1}^p\sigma_{it}^{\alpha_t}}=0$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Asymptotic conditional distribution of $Q_t$}
+    \begin{prop}[1]
+    Given $F_{t-1}$, denote $a_{pt} = 0$ and $b_{pt}=(\sum_{j=1}^p \sigma_{it}^{\alpha_t})^{1/\alpha_t}$, we have, as $p\to \infty$,
+    $$
+\frac{Q_t-a_{pt}}{b_{pt}} \stackrel{d}{\to} \exp(-x^{-\alpha_t}).
+    $$
+   \end{prop}
+    
+
+\end{frame}
 
 \section{Parameter Estimation}
 
@@ -313,8 +367,132 @@ where $\set{\sigma_t,\alpha_t}$ can be obtained recursively through (*) with an 
 
 \begin{frame}
     \frametitle{AcF estimation for conditional VaR of maxima}
+\begin{itemize}
+    \item temporal approximation ability of AcF to the maxima $\set{Q_t}$ process from a general factor model
+    \bigskip
+    \item Model the $\set{Q_t}$ process using AcF and calculate the corresponding $cVaR_t^q$ for $Q_t$ using the fitted AcF.
+    \bigskip
+    \item $cVaR_t^q$ is defined as the $1-q$ extreme quantile of $Q_t$ given all past information $\mathcal{F}_{t-1}$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Model Setting}
+    \begin{itemize}
+        \item Simulate $\set{Q_t}$ process from a similar one-factor linear model:
+        $$
+        X_i=0.09(\beta_iZ_t+\sigma_i\varepsilon_{it}),\quad i=1,\dots,p,
+        $$
+       
+        \item $p=100$
+        \bigskip
+        \item $v_t=\gamma_0+\gamma_1\log v_{t-1}+\gamma_2\exp(-\gamma_3 Q_{t-1})$ with $(\gamma_0,\gamma_1,\gamma_2,\gamma_3)=(-0.1,0.9,0.3,5)$
+        \bigskip
+    \end{itemize}
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Model Evaluation}
+\begin{itemize}
+    \item First fit AcF based on the training set $\set{Q_t}_{t=1}^{T_1}$.
+    \medskip
+    \item Then using fitted AcF, calculate $cVaR_t^q$ for each $Q_t$ on the test set $\set{Q_t}_{t=T_1+1}^{T_1+T_2}$
+    \medskip
+    \item The true $\set{Q_t}_{t=T_1+1}^{T_1+T_2}$ are then compared with the $\set{cVaR_t^q}_{t=T_1+1}^{T_1+T_2}$ and the number of violations is recorded.
+    \medskip
+    \item A violation happens when the observed daily maxima $Q_t$ is     larger than the corresponding $cVaR_t^q$ given by AcF.
+    \medskip
+    \item If AcF approximates the tail behavior of $\set{Q_t}$ process well, the expected proportion of violations in the test set should be close to $q$.
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Model Evaluation}
+    \begin{itemize}
+        \item Also, assess the goodness of approximation by calculating the correlation between the true
+        process $v_t$ and the estimated process $\hat{\alpha}_t$ by AcF
+        \bigskip
+        \item $T_1=1000,2000,5000$ $T_2=100$ and $q^0=0.1,0.05,0.01$
+        \bigskip
+        \item repeat 500 times
+        \bigskip
+        \item calculate the average violation times $\bar{q}$, mean and the median of the correlation.
+    \end{itemize}
 
     
 
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Simulation Results}
+    \begin{figure}
+        \includegraphics[width=01\textwidth]{table1.png}   
+    \end{figure}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Performance of the MLE}
+ To study the finite sample performance of the MLE, simulate the data from an AcF with the following parameters $(\beta_0,\beta_1,\beta_2,\beta_3,\gamma_0,\gamma_1,\gamma_2,\gamma_3,\mu)=(-0.050,0.96,-0.051,6.68,-0.068,0.89,0.33,5.33,-0.069)$
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Simulation Result}
+\begin{figure}
+    \includegraphics[width=1\textwidth]{table4.png}
+\end{figure}
+    
+
+\end{frame}
+
+
+\section{Real Data Applications}
+
+
+
+\begin{frame}
+    \frametitle{Cross-sectional maxima of the negative daily log-returns of stocks}
+
+    \begin{figure}
+        \includegraphics[width=1\textwidth]{table5.png}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Cross-sectional maxima of the negative daily log-returns of stocks}
+
+    \begin{figure}
+        \includegraphics[width=1\textwidth]{fig3.png}
+    \end{figure}
+
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Intra-day maxima of 3-minute negative log-returns for USD/JPY foreign exchange rate}
+
+    \begin{figure}
+        \includegraphics[width=1\textwidth]{table6.png}
+    \end{figure}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Intra-day maxima of 3-minute negative log-returns for USD/JPY foreign exchange rate}
+
+    \begin{figure}
+        \includegraphics[width=1\textwidth]{fig7.png}
+    \end{figure}
 \end{frame}
 \end{document}

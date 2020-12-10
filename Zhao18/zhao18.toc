@@ -1,4 +1,5 @@
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@sectionintoc {2}{Autoregressive conditional Fr\'echet Model}{6}{0}{2}
-\beamer@sectionintoc {3}{Parameter Estimation}{13}{0}{3}
-\beamer@sectionintoc {4}{Simulation Study}{20}{0}{4}
+\beamer@sectionintoc {3}{Parameter Estimation}{17}{0}{3}
+\beamer@sectionintoc {4}{Simulation Study}{24}{0}{4}
+\beamer@sectionintoc {5}{Real Data Applications}{35}{0}{5}

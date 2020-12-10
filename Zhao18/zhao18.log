@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.14)  9 DEC 2020 21:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.9.14)  10 DEC 2020 14:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -730,7 +730,7 @@ Overfull \hbox (50.4825pt too wide) has occurred while \output is active
 [8
 
 ]
-<fig1.png, id=284, 2338.7375pt x 959.585pt>
+<fig1.png, id=291, 2338.7375pt x 959.585pt>
 File: fig1.png Graphic file (type png)
 <use fig1.png>
 Package pdftex.def Info: fig1.png  used on input line 145.
@@ -763,7 +763,7 @@ Overfull \hbox (50.4825pt too wide) has occurred while \output is active
 
 [12
 
-] (./zhao18.toc)
+]
 Overfull \hbox (50.4825pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -791,7 +791,7 @@ Overfull \hbox (50.4825pt too wide) has occurred while \output is active
 
 [16
 
-]
+] (./zhao18.toc)
 Overfull \hbox (50.4825pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -812,7 +812,7 @@ Overfull \hbox (50.4825pt too wide) has occurred while \output is active
 
 [19
 
-] (./zhao18.toc)
+]
 Overfull \hbox (50.4825pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -834,19 +834,13 @@ Overfull \hbox (50.4825pt too wide) has occurred while \output is active
 [22
 
 ]
-<fig2.png, id=681, 1591.9475pt x 1264.725pt>
-File: fig2.png Graphic file (type png)
-<use fig2.png>
-Package pdftex.def Info: fig2.png  used on input line 311.
-(pdftex.def)             Requested size: 239.60567pt x 190.3374pt.
-
 Overfull \hbox (50.4825pt too wide) has occurred while \output is active
  [][][][]  
  []
 
 [23
 
- <./fig2.png>]
+] (./zhao18.toc)
 Overfull \hbox (50.4825pt too wide) has occurred while \output is active
  [][][][]  
  []
@@ -854,6 +848,153 @@ Overfull \hbox (50.4825pt too wide) has occurred while \output is active
 [24
 
 ]
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[25
+
+]
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[26
+
+]
+<fig2.png, id=805, 1591.9475pt x 1264.725pt>
+File: fig2.png Graphic file (type png)
+<use fig2.png>
+Package pdftex.def Info: fig2.png  used on input line 365.
+(pdftex.def)             Requested size: 239.60567pt x 190.3374pt.
+
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[27
+
+ <./fig2.png>]
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[28
+
+]
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[29
+
+]
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[30
+
+]
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[31
+
+]
+<table1.png, id=944, 2298.5875pt x 385.44pt>
+File: table1.png Graphic file (type png)
+<use table1.png>
+Package pdftex.def Info: table1.png  used on input line 436.
+(pdftex.def)             Requested size: 342.2953pt x 57.39592pt.
+
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[32
+
+ <./table1.png>]
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[33
+
+]
+<table4.png, id=1000, 2370.8575pt x 1192.455pt>
+File: table4.png Graphic file (type png)
+<use table4.png>
+Package pdftex.def Info: table4.png  used on input line 455.
+(pdftex.def)             Requested size: 342.2953pt x 172.14644pt.
+
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[34
+
+ <./table4.png>] (./zhao18.toc)
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[35
+
+]
+<table5.png, id=1060, 2302.6025pt x 469.755pt>
+File: table5.png Graphic file (type png)
+<use table5.png>
+Package pdftex.def Info: table5.png  used on input line 469.
+(pdftex.def)             Requested size: 342.2953pt x 69.82944pt.
+
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[36
+
+ <./table5.png>]
+<fig3.png, id=1089, 1800.7275pt x 815.045pt>
+File: fig3.png Graphic file (type png)
+<use fig3.png>
+Package pdftex.def Info: fig3.png  used on input line 478.
+(pdftex.def)             Requested size: 342.2953pt x 154.92233pt.
+
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[37
+
+ <./fig3.png>]
+<table6.png, id=1120, 2346.7675pt x 313.17pt>
+File: table6.png Graphic file (type png)
+<use table6.png>
+Package pdftex.def Info: table6.png  used on input line 488.
+(pdftex.def)             Requested size: 342.2953pt x 45.67847pt.
+
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[38
+
+ <./table6.png>]
+<fig7.png, id=1148, 2386.9175pt x 1144.275pt>
+File: fig7.png Graphic file (type png)
+<use fig7.png>
+Package pdftex.def Info: fig7.png  used on input line 497.
+(pdftex.def)             Requested size: 342.2953pt x 164.09103pt.
+
+Overfull \hbox (50.4825pt too wide) has occurred while \output is active
+ [][][][]  
+ []
+
+[39
+
+ <./fig7.png>]
 \tf@nav=\write6
 \openout6 = `zhao18.nav'.
 
@@ -863,27 +1004,27 @@ Overfull \hbox (50.4825pt too wide) has occurred while \output is active
 \tf@snm=\write8
 \openout8 = `zhao18.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 320.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 320.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 498.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 498.
  (./zhao18.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 320.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 320.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 498.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 498.
 Package rerunfilecheck Info: File `zhao18.out' has not changed.
-(rerunfilecheck)             Checksum: 9F47DF14CE5E8EFBEAFDE036CAC3330A;231.
+(rerunfilecheck)             Checksum: 4FBD9109CE2F36C9A3FD74056CFC1234;288.
  ) 
 Here is how much of TeX's memory you used:
- 18181 strings out of 480608
- 350270 string characters out of 5903615
+ 18290 strings out of 480608
+ 351484 string characters out of 5903615
  596924 words of memory out of 5000000
- 33566 multiletter control sequences out of 15000+600000
+ 33636 multiletter control sequences out of 15000+600000
  543548 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  58i,16n,67p,816b,635s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on zhao18.pdf (24 pages, 784865 bytes).
+</usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on zhao18.pdf (39 pages, 1861324 bytes).
 PDF statistics:
- 794 PDF objects out of 1000 (max. 8388607)
- 729 compressed objects within 8 object streams
- 53 named destinations out of 1000 (max. 500000)
- 127 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1251 PDF objects out of 1440 (max. 8388607)
+ 1152 compressed objects within 12 object streams
+ 84 named destinations out of 1000 (max. 500000)
+ 165 words of extra memory for PDF output out of 10000 (max. 10000000)
 
