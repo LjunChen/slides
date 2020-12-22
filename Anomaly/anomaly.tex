@@ -1,0 +1,162 @@
+%!TEX program =pdflatex
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+%%define new comand
+\def\argmin{\mathop{\rm arg~min}\limits}
+\def\argmin{\mathop{\rm arg~min}\limits}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+\newcommand{\brho}{\displaystyle{\large{\boldsymbol{\rho}}}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bfeta}{\boldsymbol{\eta}}
+\newcommand{\bPsi}{\boldsymbol{\Psi}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bvartheta}{\boldsymbol{\vartheta}}
+\newcommand{\bzero}{\mathbf{0}}
+\newcommand{\bone}{\mathbf{1}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\suit}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\msuit}[1]{\left[ #1 \right]}
+\author{Edoardo Vignotto and Sebastian Engelke}
+\title{Extreme value theory for anomaly detection –the GPD classifier}
+\begin{document}
+\begin{frame}
+\titlepage
+\begin{center}
+    Published on Extremes(2020).
+
+    \bigskip
+    Presented by Liujun Chen.
+\end{center}
+\end{frame}
+\AtBeginSection[]
+{
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+
+\section{Introduction}
+\begin{frame}
+    \frametitle{Normal VS Abnormal}
+
+    \begin{itemize}
+        \item Modern classifiers are typically not able to discriminate between normal and abnormal classes and may give high confidence predictions for unrecognizable objects.
+        \bigskip 
+        \item We call a class normal if we have examples of it during the training phase, call a class abnormal if we have no examples of it during the training phase.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Normal VS Abnormal}
+\begin{itemize}    
+    \item The ability to distinguish between these two cases is important if there is the possibility that new classes arise in the future or if there have not been any examples of some classes in the training set due to their rarity.
+    \bigskip
+    \item The task of distinguishing between normal and abnormal test data points is called anomaly detection
+\end{itemize}
+    
+\end{frame}
+
+\begin{frame}
+    \frametitle{Why extreme value thoery?}
+\begin{itemize}
+    \item  In the last few years,extreme value theory has become an important tool in multivariate statistics and machine learning.
+    \bigskip
+    \item  This is due to the fact that the extreme features, rather than the average ones, are the most important for discriminating between different objects
+\end{itemize}
+    
+
+\end{frame}
+
+
+\section{Extreme Value Theory}
+
+\begin{frame}
+    \frametitle{Extreme Value Theory}
+\begin{itemize}
+    \item Let $X_1,X_2,\dots$ be a sequence of i.i.d. random variables from the distribution function $F$m and denote by $M_n =\max(X_1,\dots,X_n)$ be the maximum of the first $n$ samples.
+    \item  
+    $$
+P\suit{\frac{M_n-a_n}{b_n}\le z}\to G(z)
+    $$
+    
+    \item For a threshold $u\in \mathbb{R}$ that tends to the upper endpoint of distribution $F$ of $X$, the distribution function of $X-u$, conditional on $X>u$, is approximately 
+    $$
+    H(y) = 1- \suit{1+\frac{\xi y}{\sigma}}^{-1/\xi}, y>0.
+    $$
+\end{itemize}
+    
+
+\end{frame}
+
+\section{General Setting}
+
+\begin{frame}
+    \frametitle{Setting }
+\begin{itemize}
+    \item Denote the training data by $x_i \in \mathbb{R}^p$, each of them labeled as class $y_i\in \set{C_1,\dots,C_J}, i=1,2,\dots,n$
+    \item In total, then, we have $J$ normal classes and we assume that each class is described by a continuous density function $f_{C_j}$ defined on $\mathbb{R}^p$, where the probability that a point in class $C_j$ falls in the set $A\subset \mathbb{R}^p$ is 
+    $$
+        \int_{x\in A} f_{C_j}(x)dx.
+    $$
+    \item The training data set can be described as a mixture of these density functions, with unconditional density 
+    $$
+        f(x) = \sum_{j=1}^J w_j f_{C_j}(x), x\in \mathbb{R}^p
+    $$
+    for weights $w_j \in [0,1]$ with $\sum_{j=1}^J w_j=1$.
+\end{itemize}
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Normal VS Abnormal}
+    \begin{itemize}
+        \item  The value of the function $f$ evaluated at some point is thus large if that point has high chance to be normal. In the following, we approximate directly $f$ and then we do not have to estimate the weights $w_j$.
+        \item suppose that we have a new unlabeled test point $x_0\in \mathbb{R}$ that we would like to mark as normal or abnormal.
+        \item The goal in anomaly detection is to decide if $x_0$ comes from the distribution with density $f$ of the training set or not. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Normal VS Abnormal}
+    Thus, we need to perform hypothesis test:
+    \begin{center}
+        \bigskip
+        $H_0$: $x_0$ is normal 
+
+        \bigskip
+        $H_1$: $x_0$ is abnormal
+    \end{center}
+    
+
+\end{frame}
+
+\section{The extreme value machine}
+\begin{frame}
+    \frametitle{The extreme value machine}
+
+    
+
+\end{frame}
+\end{document}
