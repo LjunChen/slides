@@ -124,6 +124,10 @@ $$
 \begin{itemize}
     \item The efficiency of BM and POT estimators can be compared in terms of their asymptotic bias and
     variance.
+<<<<<<< HEAD
+    \bigskip
+=======
+>>>>>>> 289f5da58f43f34b477429583765552fe477880e
     \item Particularly focus on the estimation of the extreme value index $\gamma$.
 \end{itemize}
     
@@ -243,7 +247,11 @@ latter two limit relations, which can be captured by suitable second order condi
     method, we only deal with the MLE and the PWM.
     \item Perhaps surprisingly, asymptotic theory for the BM method has hitherto mostly ignored the fact that
     block maxima are only {\color{red} approximately} GEV distributed.
+<<<<<<< HEAD
+    \item Only recent theoretical studies in Ferreira and de Haan (2015) and Dombry and Ferreira (2019) for the PWM and MLE, respectively,
+=======
     \item Only recent theoretical studies in Ferreira and de Haan (2015) and Dombry and Ferreira (2017) for the PWM and MLE, respectively,
+>>>>>>> 289f5da58f43f34b477429583765552fe477880e
     take the approximation into account.
 \end{itemize}
 \end{frame}
@@ -265,6 +273,15 @@ latter two limit relations, which can be captured by suitable second order condi
 We consider the rate of convergence of the root mean squared error.
 
 \begin{itemize}
+<<<<<<< HEAD
+    \item Assume that $A_m(t) \asymp t^{\rho_m}$ with $\rho_m\in (-\infty,0)$.
+    \item The best attainable
+    rate of convergence is achieved when squared bias and variance are of the same order, that is, when 
+    $$
+        A_m^2\suit{\frac{n}{k}} \asymp \suit{\frac{n}{k}}^{2\rho_m} \asymp \frac{1}{k}.
+    $$
+    \item Solving for $k$ yields $k \asymp n^{-2\rho_m/(1-2\rho_m)}$, which implies
+=======
     \item Assume that $A_m(t)=t^{\rho_m}$ with $\rho_m\in (-\infty,0)$.
     \item The best attainable
     rate of convergence is achieved when squared bias and variance are of the same order, that is, when 
@@ -272,6 +289,7 @@ We consider the rate of convergence of the root mean squared error.
         A_m^2\suit{\frac{n}{k}} = \suit{\frac{n}{k}}^{2\rho_m}=\frac{1}{k}.
     $$
     \item Solving for $k$ yields $k=n^{-2\rho_m/(1-2\rho_m)}$, which implies
+>>>>>>> 289f5da58f43f34b477429583765552fe477880e
     $$
 \text{Rate of convergence of} \ \hat{\gamma} = n^{-2\rho_m/(1-2\rho_m)},
     $$
@@ -308,7 +326,11 @@ We consider the rate of convergence of the root mean squared error.
 
     \begin{itemize}
         \item A detailed analysis of the PWM and the ML estimators under the BM and POT approach has
+<<<<<<< HEAD
+        been carried out in Ferreira and de Haan (2015) and Dombry and Ferreira (2019), for the case $\rho_{BM}=\rho_{POT}=[-1,0]$ and $\gamma\in (-0.5,0.5)$.
+=======
         been carried out in Ferreira and de Haan (2015) and Dombry and Ferreira (2017), for the case $\rho_{BM}=\rho_{POT}=[-1,0]$ and $\gamma\in (-0.5,0.5)$.
+>>>>>>> 289f5da58f43f34b477429583765552fe477880e
         \item When using the same value for $k$, the BM version of either ML or PWM     leads to a lower asymptotic         variance compared to the corresponding POT version, for all $\gamma\in (-0.5,0.5)$.
         \item Asymptotic bias is smaller for the POT versions of the two estimators, for all $(\gamma,\rho)\in (-0.5,0.5)\times [-1,0]$.
         \item When comparing the optimal AMSE, for the ML, POT is better. For the PWM, BM is preferable for most combinations of $(\gamma,\rho)$.
@@ -348,18 +370,31 @@ We consider the rate of convergence of the root mean squared error.
 \end{frame}
 
 \begin{frame}
+<<<<<<< HEAD
+    \frametitle{The choice of $k$}
+=======
     \frametitle{The choice of $k$ for the POT}
+>>>>>>> 289f5da58f43f34b477429583765552fe477880e
     For the POT approach, there exist a few attempts on resolving the choice of k issue in a formal manner.
 \begin{itemize}
     \item One solution is to find the optimal k that minimizes the asymptotic MSE; see, e.g., Danielsson et al. (2001), Drees and Kaufmann (1998) and Guillou and Hall (2001).
     \item one may also rely on bias corrections, which typically allows
     for a much larger choice of $k$, see e.g., Gomes, De Haan and Rodrigues (2008).
 \end{itemize}
+<<<<<<< HEAD
+\medskip
+
+For the BM approach: unknow till now.
+=======
     
+>>>>>>> 289f5da58f43f34b477429583765552fe477880e
 
 \end{frame}
 
 
+<<<<<<< HEAD
+
+=======
 \begin{frame}
     \frametitle{The choice of $k$ for the BM}
     \begin{center}
@@ -369,6 +404,7 @@ We consider the rate of convergence of the root mean squared error.
     
 
 \end{frame}
+>>>>>>> 289f5da58f43f34b477429583765552fe477880e
 
 \section{BM and POT for Univariate Stationary Time Series}
 \begin{frame}
@@ -376,6 +412,10 @@ We consider the rate of convergence of the root mean squared error.
 \begin{itemize}
     \item Assume that $\suit{X_t}_{t\in \mathbb{Z}}$ is a strictly stationary univariate time series, and the
     stationary cdf F satisfies the domain-of-attraction condition.
+<<<<<<< HEAD
+    \bigskip
+=======
+>>>>>>> 289f5da58f43f34b477429583765552fe477880e
     \item It is important to note that
     the parameters $\gamma,a_r,b_r$ only depend on the stationary cdf $F$.
 \end{itemize}
@@ -518,7 +558,7 @@ $$
     \frametitle{Estimating high quantiles}
 For the BM,
 $$
-F^{\leftarrow}(1-p)\approx b_r+a_r\frac{(rp)^{-\gamma}-1}{\gamma}.
+F^{\leftarrow}(1-p)\approx b_r+a_r\frac{\set{-r\log(1-p)}^{-\gamma}-1}{\gamma}\approx b_r+a_r\frac{(rp)^{-\gamma}-1}{\gamma}.
 $$
 For the POT,
 $$

@@ -1,4 +1,4 @@
 \beamer@sectionintoc {1}{Introduction}{2}{0}{1}
 \beamer@sectionintoc {2}{Efficiency Comparison for univariate i.i.d. observations}{7}{0}{2}
 \beamer@sectionintoc {3}{BM and POT for Univariate Stationary Time Series}{27}{0}{3}
-\beamer@sectionintoc {4}{BM and POT for Multivariate Observations}{40}{0}{4}
+\beamer@sectionintoc {4}{BM and POT for Multivariate Observations}{41}{0}{4}
