@@ -1,0 +1,90 @@
+%!TEX program =pdflatex
+\documentclass{beamer}
+\usetheme{CambridgeUS}
+%%define new comand
+\def\argmin{\mathop{\rm arg~min}\limits}
+\def\argmin{\mathop{\rm arg~min}\limits}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\bbeta}{\boldsymbol{\beta}}
+\newcommand{\bSigma}{\boldsymbol{\Sigma}}
+\newcommand{\brho}{\displaystyle{\large{\boldsymbol{\rho}}}}
+\newcommand{\bgamma}{\boldsymbol{\gamma}}
+\newcommand{\bfeta}{\boldsymbol{\eta}}
+\newcommand{\bPsi}{\boldsymbol{\Psi}}
+\newcommand{\bmu}{\boldsymbol{\mu}}
+\newcommand{\bvartheta}{\boldsymbol{\vartheta}}
+\newcommand{\bzero}{\mathbf{0}}
+\newcommand{\bone}{\mathbf{1}}
+\newcommand{\bA}{\mathbf{A}}
+\newcommand{\ba}{\mathbf{a}}
+\newcommand{\bB}{\mathbf{B}}
+\newcommand{\bb}{\mathbf{b}}
+\newcommand{\bD}{\mathbf{D}}
+\newcommand{\bU}{\mathbf{U}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bV}{\mathbf{V}}
+\newcommand{\bW}{\mathbf{W}}
+\newcommand{\bw}{\mathbf{w}}
+\newcommand{\bX}{\mathbf{X}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bY}{\mathbf{Y}}
+\newcommand{\by}{\mathbf{y}}
+\newcommand{\bZ}{\mathbf{Z}}
+\newcommand{\bz}{\mathbf{z}}
+\newcommand{\suit}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\msuit}[1]{\left[ #1 \right]}
+
+\newcommand{\xseq}{\suit{X_{n,i}}_{1\le i\le n}}
+\author{Drees, H. and Rootz\'en H.}
+\title{Limit theorems for empirical processes of cluster functions}
+\date{}
+\begin{document}
+\begin{frame}
+\titlepage
+
+\begin{center}
+    \vspace{-16ex}
+    Published on AoS (2010).
+\end{center}
+\end{frame}
+\AtBeginSection[]
+{
+\begin{frame}
+\frametitle{Table of Contents}
+\tableofcontents[currentsection]
+\end{frame}
+}
+
+\section{Introduction}
+\begin{frame}
+    \frametitle{Introduction}
+
+    
+
+\end{frame}
+
+\section{Limit theorems for general empirical cluster processes.}
+
+\begin{frame}
+    \frametitle{Notations}
+    \begin{itemize}
+        \item For some $d\in \mathbb{N}$, let $E$ be a measurable subset of $R^d$ containing $0$.
+        \item $\xseq$ be a triangular array of row-wise stationary random variables, e.g. $X_{n,1}  =(\frac{X_i-u_n}{a_n})_{+}$.
+        \item $Y_{n,j}$ be the $j$ th block of $r_n$ consecutive values of the $n$ th row of $(X_{n,i})$.
+        \item Thus, there are $m_n=[n/r_n]$ blocks 
+        $$
+            Y_{n,j}:= (X_{n,i})_{(j-1)r_n+1\le i\le jr_n}, \quad 1\le j \le m_n.
+        $$
+        \item  Write $Y_n$ for a “generic block” so that $Y_n\stackrel{d}{=} Y_{n,1}$.
+        \item The block lengths $r_n\to\infty, r_n/n\to 0$.
+        \item $v_n:=P\suit{X_{n,1}\ne 0}\to 0$.
+    \end{itemize}
+
+    
+
+\end{frame}
+
+
+\end{document}
